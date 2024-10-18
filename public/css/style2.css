@@ -215,6 +215,9 @@ ul {
 @media (min-width: 1500px) {
     .container {
         max-width: 1368px;
+    }
+
+    .container.header-logo{
         margin-left:0;
     }
 }
@@ -457,7 +460,7 @@ ul {
 .banner-img-wp {
     width: 60%;
     height: 60%;
-    padding-left: 30px;
+    /* padding-left: 30px; */
 }
 
 .banner-img {
@@ -608,8 +611,8 @@ p {
 /* ******************** */
 
 .section {
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 5%;
+    padding-bottom: 1%;
     position: relative;
 }
 
@@ -712,6 +715,7 @@ p {
 .repeat-img {
     background-size: contain;
     background-repeat: repeat;
+    border-radius: 8% 8% 4% 4%;
 }
 
 .menu-tab-wp {
@@ -744,9 +748,14 @@ p {
 .filter-active {
     position: absolute;
     left: 0;
-    top: 12px;
+    top: 11px;
     min-height: 50px;
     z-index: -1;
+    margin-left:2px;
+}
+
+.filter.dinner {
+    margin-right:5px;
 }
 
 .menu-tab ul li img {

@@ -93,7 +93,7 @@ jQuery(window).on('load', function () {
             activeTab = this.index;
             animation.to(".filter-active", {
                 x: targets[activeTab].offsetLeft,
-                width: targets[activeTab].offsetWidth
+                width: targets[activeTab].offsetWidth -2
             });
 
             animation.to(targets[old], {

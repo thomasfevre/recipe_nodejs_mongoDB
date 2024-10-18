@@ -75,7 +75,6 @@ exports.exploreRecipe = async(req, res) => {
 exports.searchRecipe = async(req, res) => {
   try {
     let searchTerm = req.body.searchTerm;
-    console.log(searchTerm);
     let recipe = await Recipe.find( { $text: { $search: searchTerm, $diacriticSensitive: true } });
     res.render('search', { title: 'Cooking Blog - Search', recipe } );
   } catch (error) {
