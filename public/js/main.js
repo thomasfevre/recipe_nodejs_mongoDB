@@ -6,26 +6,59 @@ $(document).ready(function ($) {
         
         jQuery("#menu-dish").removeClass("bydefault_show");
     });
-    $(function () {
-        var filterList = {
-            init: function () {
-                $("#menu-dish").mixItUp({
-                    selectors: {
-                        target: ".dish-box-wp",
-                        filter: ".filter",
-                    },
-                    animation: {
-                        effects: "fade",
-                        easing: "ease-in-out",
-                    },
-                    load: {
-                        filter: ".all, .breakfast, .lunch, .dinner",
-                    },
-                });
+
+    
+
+    // Filter functionality
+    jQuery(".filters .filter").on("click", function () {
+        
+        // Remove 'active-filter' class from all filters
+        jQuery(".filter").removeClass("active-filter");
+        
+        // Add 'active-filter' class to the clicked filter
+        jQuery(this).addClass("active-filter");
+
+        // Get the class of the clicked filter
+        var filterName = jQuery(this).attr("data-filter");
+        console.log(filterName);
+        // Show/Hide meal items based on the selected filter
+        // jQuery("#menu-dish .dish-box-wp").hide();
+        // jQuery("#menu-dish ." + filterName).show();
+        $("#menu-dish").mixItUp({
+            selectors: {
+                target: ".dish-box-wp",
+                filter: ".filter",
             },
-        };
-        filterList.init();
+            animation: {
+                effects: "fade",
+                easing: "ease-in-out",
+            },
+            load: {
+                filter: ".all, .breakfast, .lunch, .dinner",
+            },
+        });
     });
+
+    // $(function () {
+    //     var filterList = {
+    //         init: function () {
+    //             $("#menu-dish").mixItUp({
+    //                 selectors: {
+    //                     target: ".dish-box-wp",
+    //                     filter: ".filter",
+    //                 },
+    //                 animation: {
+    //                     effects: "fade",
+    //                     easing: "ease-in-out",
+    //                 },
+    //                 load: {
+    //                     filter: ".all, .breakfast, .lunch, .dinner",
+    //                 },
+    //             });
+    //         },
+    //     };
+    //     filterList.init();
+    // });
 
     jQuery(".menu-toggle").click(function () {
         jQuery(".main-navigation").toggleClass("toggled");
@@ -107,7 +140,17 @@ jQuery(window).on('load', function () {
             }, 0);
 
         }
-        let mealFilter = document.querySelector("li.filter-active");
-        console.log(mealFilter);
     }
+    // Initialize MixItUp
+    var mixer = mixitup('#menu-dish', {
+        selectors: {
+            target: '.dish-box-wp',
+            control: '.filter'
+        },
+        animation: {
+            effects: 'fade',
+            easing: 'ease-in-out'
+        }
+    });
 });
+

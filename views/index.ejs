@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="sec-title text-center mb-5">
-                        <p class="sec-sub-title mb-3">our menu</p>
+                        <p class="sec-sub-title mb-3">Recipes</p>
                         <h2 class="h2-title">wake up early, <span>eat fresh & healthy</span></h2>
                         <div class="sec-title-shape mb-4">
                             <img src="/images/title-shape.svg" alt="">
@@ -57,19 +57,19 @@
                         <div class="menu-tab text-center">
                             <ul class="filters">
                                 <div class="filter-active"></div>
-                                <li class="filter" data-filter=".all, .breakfast, .lunch, .dinner">
+                                <li class="filter" data-filter=".all, .breakfast, .lunch, .dinner" aria-label="all">
                                     <img src="/images/menu-1.png" alt="">
                                     All
                                 </li>
-                                <li class="filter" data-filter=".breakfast" aria-label="breakfastMeals">
+                                <li class="filter" data-filter=".breakfast" aria-label="breakfast">
                                     <img src="/images/menu-2.png" alt="">
                                     Breakfast
                                 </li>
-                                <li class="filter" data-filter=".lunch" aria-label="lunchMeals">
+                                <li class="filter" data-filter=".lunch" aria-label="lunch">
                                     <img src="/images/menu-3.png" alt="">
                                     Lunch
                                 </li>
-                                <li class="filter" data-filter=".dinner" aria-label="dinnerMeals">
+                                <li class="filter" data-filter=".dinner" aria-label="dinner">
                                     <img src="/images/menu-4.png" alt="">
                                     Dinner
                                 </li>
@@ -80,19 +80,18 @@
             </div>
             <div class="menu-list-row">
                 <div class="row g-xxl-5 bydefault_show" id="menu-dish">
-                    
 
-                    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-                      <% if(typeof food.breakfastMeals !== 'undefined' && food.breakfastMeals.length > 0) { %>
-                        <% food.breakfastMeals.forEach(function(recipe, index){ %>
-                        
-                          <div class="col-lg-4 col-sm-6 dish-box-wp breakfast" data-cat="breakfast">
-                            <div class="dish-box text-center">
-                                <a href="/recipe/<%= recipe._id %>" class="col text-center">
-                                  <div class="category__img category__img--large">
-                                    <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
-                                  </div>
-                                </a>
+                  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-5">
+                    <% if(typeof food.latest !== 'undefined' && food.latest.length > 0) { %>
+                      <% food.latest.forEach(function(recipe, index){ %>
+                      
+                        <div class="col-lg-4 col-sm-6 dish-box-wp all" data-cat="all">
+                          <div class="dish-box text-center">
+                              <a href="/recipe/<%= recipe._id %>" class="col text-center">
+                                <div class="category__img category__img--large">
+                                  <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+                                </div>
+                              
                                 <div class="dish-title">
                                     <h3 class="h3-title"><%= recipe.name %></h3>
                                     <p>120 calories</p>
@@ -112,16 +111,142 @@
                                 <div class="dist-bottom-row">
                                     something
                                 </div>
-                            </div>
-                        </div>
-                        </a>
+                              </a>
+                          </div>
+                      </div>
+                     
 
-                        
-                        <% }) %>
-                      <% } else { %>
-                        <p>No items found.</p>
-                      <% } %>
-                    </div>
+                      
+                      <% }) %>
+                    <% } else { %>
+                      <p>No items found.</p>
+                    <% } %>
+
+                    <!-- BREAKFAST -->
+                    <% if(typeof food.breakfastMeals !== 'undefined' && food.breakfastMeals.length > 0) { %>
+                      <% food.breakfastMeals.forEach(function(recipe, index){ %>
+                      
+                        <div class="col-lg-4 col-sm-6 dish-box-wp breakfast" data-cat="breakfast">
+                          <div class="dish-box text-center">
+                              <a href="/recipe/<%= recipe._id %>" class="col text-center">
+                                <div class="category__img category__img--large">
+                                  <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+                                </div>
+                              </a>
+                                <div class="dish-title">
+                                    <h3 class="h3-title"><%= recipe.name %></h3>
+                                    <p>120 calories</p>
+                                </div>
+                                <div class="dish-info">
+                                    <ul>
+                                        <li>
+                                            <p>Type</p>
+                                            <b>Non Veg</b>
+                                        </li>
+                                        <li>
+                                            <p>Persons</p>
+                                            <b>2</b>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="dist-bottom-row">
+                                    something
+                                </div>
+                              </a>
+                          </div>
+                      </div>
+                      
+
+                      
+                      <% }) %>
+                    <% } else { %>
+                      <p>No items found.</p>
+                    <% } %>
+
+                    <!-- LUNCH -->
+                    <% if(typeof food.lunchMeals !== 'undefined' && food.lunchMeals.length > 0) { %>
+                      <% food.lunchMeals.forEach(function(recipe, index){ %>
+                      
+                        <div class="col-lg-4 col-sm-6 dish-box-wp lunch" data-cat="lunch">
+                          <div class="dish-box text-center">
+                              <a href="/recipe/<%= recipe._id %>" class="col text-center">
+                                <div class="category__img category__img--large">
+                                  <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+                                </div>
+                              
+                                <div class="dish-title">
+                                    <h3 class="h3-title"><%= recipe.name %></h3>
+                                    <p>120 calories</p>
+                                </div>
+                                <div class="dish-info">
+                                    <ul>
+                                        <li>
+                                            <p>Type</p>
+                                            <b>Non Veg</b>
+                                        </li>
+                                        <li>
+                                            <p>Persons</p>
+                                            <b>2</b>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="dist-bottom-row">
+                                    something
+                                </div>
+                              </a>
+                          </div>
+                      </div>
+                      </a>
+
+                      
+                      <% }) %>
+                    <% } else { %>
+                      <p>No items found.</p>
+                    <% } %>
+
+                    <!-- DINNER -->
+                    <% if(typeof food.dinnerMeals !== 'undefined' && food.dinnerMeals.length > 0) { %>
+                      <% food.dinnerMeals.forEach(function(recipe, index){ %>
+                      
+                        <div class="col-lg-4 col-sm-6 dish-box-wp dinner" data-cat="dinner">
+                          <div class="dish-box text-center">
+                              <a href="/recipe/<%= recipe._id %>" class="col text-center">
+                                <div class="category__img category__img--large">
+                                  <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+                                </div>
+                              </a>
+                                <div class="dish-title">
+                                    <h3 class="h3-title"><%= recipe.name %></h3>
+                                    <p>120 calories</p>
+                                </div>
+                                <div class="dish-info">
+                                    <ul>
+                                        <li>
+                                            <p>Type</p>
+                                            <b>Non Veg</b>
+                                        </li>
+                                        <li>
+                                            <p>Persons</p>
+                                            <b>2</b>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="dist-bottom-row">
+                                    something
+                                </div>
+                              </a>
+                          </div>
+                      </div>
+                     
+
+                      
+                      <% }) %>
+                    <% } else { %>
+                      <p>No items found.</p>
+                    <% } %>
+                  
+                  </div>
+                  
                 </div>
             </div>
         </div>
@@ -158,7 +283,7 @@
 
 <!-- Latest Start -->
 
-<section class="pb-4 pt-4">
+<!-- <section class="pb-4 pt-4">
   <div class="d-flex mb-2 align-items-center">
     <h2>Latest Recipes</h2>
     <a href="/explore-latest" class="ms-auto">View More</a>
@@ -180,11 +305,11 @@
     <% } %>
   </div>
 
-</section>
+</section> -->
 <!-- Latest End -->
 
 <!-- Thai Start -->
-<section class="pb-4 pt-4">
+<!-- <section class="pb-4 pt-4">
   <div class="d-flex mb-2 align-items-center">
     <h2>Thai Recipes</h2>
     <a href="/categories/Thai" class="ms-auto">View More</a>
@@ -204,11 +329,11 @@
       <p>No items found.</p>
     <% } %>
   </div>
-</section>
+</section> -->
 <!-- Thai End -->
 
 <!-- American Start -->
-<section class="pb-4 pt-4">
+<!-- <section class="pb-4 pt-4">
   <div class="d-flex mb-2 align-items-center">
     <h2>American Recipes</h2>
     <a href="/categories/American" class="ms-auto">View More</a>
@@ -228,11 +353,11 @@
       <p>No items found.</p>
     <% } %>
   </div>
-</section>
+</section> -->
 <!-- American End -->
 
 <!-- Chinese Recipes -->
-<section class="pb-4 pt-4">
+<!-- <section class="pb-4 pt-4">
   <div class="d-flex mb-2 align-items-center">
     <h2>Chinese Recipes</h2>
     <a href="/categories/American" class="ms-auto">View More</a>
@@ -252,8 +377,8 @@
       <p>No items found.</p>
     <% } %>
   </div>
-</section>
-<!-- American End -->
+</section> -->
+<!-- Chinese End -->
 
 
 

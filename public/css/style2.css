@@ -347,7 +347,7 @@ ul {
         transition: 1s cubic-bezier(0.165, 0.84, 0.44, 1);
         overflow-y: auto;
         transform: translateY(-100%);
-        background-image: url(assets/images/blog-pattern-bg.png);
+        background-image: url(/images/blog-pattern-bg.png);
         background-position: center;
         background-color: #f3f3f5;
     }
@@ -716,7 +716,7 @@ p {
 .repeat-img {
     background-size: contain;
     background-repeat: repeat;
-    border-radius: 8% 8% 4% 4%;
+    border-radius: 100px 100px 50px 50px;
 }
 
 .menu-tab-wp {
@@ -815,16 +815,19 @@ p {
 
 .dish-title .h3-title {
     text-transform: capitalize;
-    margin-bottom: 5px;
-    font-family: 'Playfair Display', serif;
+    padding-bottom: 50px;
+    font-family: 'Poppins', sans-serif;
     font-weight: bold;
     color: #0d0d25;
     transition: 0.3s;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     font-weight: 900;
+    height:50px;
+    font-size: larger;
 }
 
 .dish-title p {

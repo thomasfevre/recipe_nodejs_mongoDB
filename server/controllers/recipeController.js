@@ -23,8 +23,9 @@ exports.homepage = async(req, res) => {
     const snackMeals = await Recipe.find({ 'meal_type': 'Snack' }).limit(limitNumber2);
 
     const food = { latest, thai, american, chinese, allMeals, breakfastMeals, lunchMeals, dinnerMeals, snackMeals };
+    const meal_type = ["All", "Breakfast", "Lunch", "Dinner", "Snack"];
 
-    res.render('index', { title: 'Cooking Blog - Home', categories, food } );
+    res.render('index', { title: 'Cooking Blog - Home', categories, food, meal_type } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
