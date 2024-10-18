@@ -785,7 +785,7 @@ p {
     display: flow-root;
     padding: 0 30px 40px;
     padding-top: 0;
-    margin: 130px 0 30px;
+    margin: 30px 0 30px;
     transition: 0.8s cubic-bezier(0.22, 0.78, 0.45, 1.02);
 }
 

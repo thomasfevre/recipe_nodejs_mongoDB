@@ -9,13 +9,20 @@ const Recipe = require('../models/Recipe');
 exports.homepage = async(req, res) => {
   try {
     const limitNumber = 5;
+    const limitNumber2 = 10;
     const categories = await Category.find({}).limit(limitNumber);
     const latest = await Recipe.find({}).sort({_id: -1}).limit(limitNumber);
     const thai = await Recipe.find({ 'category': 'Thai' }).limit(limitNumber);
     const american = await Recipe.find({ 'category': 'American' }).limit(limitNumber);
     const chinese = await Recipe.find({ 'category': 'Chinese' }).limit(limitNumber);
 
-    const food = { latest, thai, american, chinese };
+    const allMeals = await Recipe.find({ 'meal_type': 'All' }).limit(limitNumber2);
+    const breakfastMeals = await Recipe.find({ 'meal_type': 'Breakfast' }).limit(limitNumber2);
+    const lunchMeals = await Recipe.find({ 'meal_type': 'Lunch' }).limit(limitNumber2);
+    const dinnerMeals = await Recipe.find({ 'meal_type': 'Dinner' }).limit(limitNumber2);
+    const snackMeals = await Recipe.find({ 'meal_type': 'Snack' }).limit(limitNumber2);
+
+    const food = { latest, thai, american, chinese, allMeals, breakfastMeals, lunchMeals, dinnerMeals, snackMeals };
 
     res.render('index', { title: 'Cooking Blog - Home', categories, food } );
   } catch (error) {

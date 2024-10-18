@@ -11,6 +11,7 @@
     "5 limes",
     "200 ml double cream"
   ],
+  "meal_type": "Breakfast",
   "category": "American",
   "image": "crab-cakes.jpg",
   "__v": 0
@@ -28,6 +29,7 @@
     "2 cloves of garlic",
     "½ a bunch of fresh coriander"
   ],
+  "meal_type": "Lunch",
   "category": "Thai",
   "image": "thai-style-mussels.jpg",
   "__v": 0
@@ -45,6 +47,7 @@
     "2 spring onions",
     "1 fresh red chilli"
   ],
+  "meal_type": "Lunch",
   "category": "Thai",
   "image": "thai-inspired-vegetable-broth.jpg",
   "__v": 0
@@ -62,6 +65,7 @@
     "24 raw peeled king prawns , from sustainable sources (defrost first, if using frozen)",
     "1 pinch Chinese five-spice powder"
   ],
+  "meal_type": "Lunch",
   "category": "Chinese",
   "image": "thai-chinese-inspired-pinch-salad.jpg",
   "__v": 0
@@ -82,6 +86,7 @@
     "1 level teaspoon cayenne pepper",
     "1 level teaspoon hot smoked paprika"
   ],
+  "meal_type": "Dinner",
   "category": "American",
   "image": "southern-friend-chicken.jpg",
   "__v": 0
@@ -102,6 +107,7 @@
     "1 teaspoon cayenne pepper",
     "olive oil"
   ],
+  "meal_type": "Breakfast",
   "category": "American",
   "image": "chocolate-banoffe-whoopie-pies.jpg",
   "__v": 0
@@ -119,6 +125,7 @@
     "80 g silken tofu",
     "low-salt soy sauce"
   ],
+  "meal_type": "Dinner",
   "category": "Thai",
   "image": "veggie-pad-thai.jpg",
   "__v": 0
@@ -136,6 +143,7 @@
     "2 fresh red chilli",
     "1 bunch of spring onions"
   ],
+  "meal_type": "Dinner",
   "category": "Chinese",
   "image": "chinese-steak-tofu-stew.jpg",
   "__v": 0
@@ -153,6 +161,7 @@
     "1 carrot",
     "3 spring onions"
   ],
+  "meal_type": "Dinner",
   "category": "Chinese",
   "image": "spring-rolls.jpg",
   "__v": 0
@@ -171,6 +180,7 @@
     "2 teaspoons cornflour",
     "2 x 120 g free-range chicken breasts , skin on"
   ],
+  "meal_type": "Dinner",
   "category": "Chinese",
   "image": "tom-daley.jpg",
   "__v": 0
@@ -191,6 +201,7 @@
     "1 teaspoon cayenne pepper",
     "olive oil"
   ],
+  "meal_type": "Dinner",
   "category": "American",
   "image": "crab-cakes.jpg",
   "__v": 0
@@ -206,6 +217,7 @@
     "1 butternut squash (1.2kg)",
     "1 bunch of fresh coriander (30g)"
   ],
+  "meal_type": "Dinner",
   "category": "Thai",
   "image": "thai-red-chicken-soup.jpg",
   "__v": 0
@@ -222,6 +234,7 @@
     "5 limes",
     "200 ml double cream"
   ],
+  "meal_type": "Breakfast",
   "category": "American",
   "image": "key-lime-pie.jpg",
   "__v": 0
@@ -239,6 +252,7 @@
     "1 stick of celery",
     "2 tablespoons mayonnaise , made using free-range eggs"
   ],
+  "meal_type": "Dinner",
   "category": "American",
   "image": "grilled-lobster-rolls.jpg",
   "__v": 0
@@ -256,6 +270,7 @@
     "400 g leftover cooked greens, such as",
     "Brussels sprouts, Brussels tops, kale, cabbage, broccoli"
   ],
+  "meal_type": "Dinner",
   "category": "Thai",
   "image": "thai-green-curry.jpg",
   "__v": 0
@@ -274,6 +289,7 @@
     "1 handful of mangetout",
     "a few shiitake mushrooms"
   ],
+  "meal_type": "Dinner",
   "category": "Chinese",
   "image": "stir-fried-vegetables.jpg",
   "__v": 0
@@ -287,6 +303,7 @@
   "ingredients": [
     "Water"
   ],
+  "meal_type": "Breakfast",
   "category": "Mexican",
   "image": "chinese-steak-tofu-stew.jpg",
   "__v": 0

@@ -80,6 +80,7 @@ jQuery(window).on('load', function () {
     });
 
     function moveBar() {
+        
         if (this.index != activeTab) {
             if (animation && animation.isActive()) {
                 animation.progress(1);
@@ -106,6 +107,7 @@ jQuery(window).on('load', function () {
             }, 0);
 
         }
-
+        let mealFilter = document.querySelector("li.filter-active");
+        console.log(mealFilter);
     }
 });
