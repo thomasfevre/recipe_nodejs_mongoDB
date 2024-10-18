@@ -125,6 +125,12 @@ exports.submitRecipe = async(req, res) => {
   res.render('submit-recipe', { title: 'Cooking Blog - Submit Recipe', infoErrorsObj, infoSubmitObj  } );
 }
 
+exports.test = async(req, res) => {
+  const infoErrorsObj = req.flash('infoErrors');
+  const infoSubmitObj = req.flash('infoSubmit');
+  res.render('test', { title: 'Cooking Blog - Test', infoErrorsObj, infoSubmitObj  } );
+}
+
 /**
  * POST /submit-recipe
  * Submit Recipe

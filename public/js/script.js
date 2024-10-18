@@ -8,3 +8,5 @@ addIngredientsBtn.addEventListener('click', function(){
   input.value = '';
   ingredientList.appendChild(newIngredients);
 });
+
+console.log('script loaded');
