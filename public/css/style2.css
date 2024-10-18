@@ -51,6 +51,7 @@ img {
     height: 100%;
     justify-content: space-between;
     align-items: center;
+    margin-left:12%;
 }
 
 .main-navigation .menu li {
@@ -779,7 +780,7 @@ p {
 
 .dish-box {
     border-radius: 30px;
-    background: linear-gradient(145deg, #ececec, #ffffff);
+    background: linear-gradient(145deg, #ececec, #e3dfdf);
     box-shadow: 28px 28px 45px #d4d4d4, -28px -28px 45px #ffffff;
     display: flow-root;
     padding: 0 30px 40px;
@@ -819,7 +820,6 @@ p {
     font-weight: bold;
     color: #0d0d25;
     transition: 0.3s;
-    min-height: 76px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
