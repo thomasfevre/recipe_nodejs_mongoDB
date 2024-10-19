@@ -545,7 +545,7 @@ ul {
 
 h1, h2, h3, h4, h5, h6 {
     color: #0d0d25;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     font-weight: 900;
 }
 
@@ -831,6 +831,7 @@ a.col.text-center:hover  {
     height:50px;
     font-size: larger;
 }
+
 
 .dish-title p {
     color: #bfbfbf;
@@ -1278,7 +1279,7 @@ a.col.text-center:hover  {
     -webkit-box-orient: vertical;
     overflow: hidden;
     font-weight: 900;
-    font-family: "playfair Display";
+    font-family: 'Poppins', sans-serif;
     color: #0d0d25;
     transition: 0.3s;
 }
@@ -1735,7 +1736,7 @@ a.col.text-center:hover  {
         height: 430px;
     }
     .dish-info ul li p {
-        font-size: 16px;
+        font-size: 12px;
         line-height: 26px;
         margin: 0;
     }
@@ -1750,6 +1751,17 @@ a.col.text-center:hover  {
     }
     .menu-tab ul li {
         padding: 10px 20px;
+    }
+
+    .dish-title .h3-title {
+        font-size:medium;
+    }
+    .dish-title p {
+        font-size:medium;
+    }
+
+    .dish-info, .dist-bottom-row {
+        font-size:small;
     }
 }
 
