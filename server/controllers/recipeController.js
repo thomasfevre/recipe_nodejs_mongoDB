@@ -165,18 +165,74 @@ exports.submitRecipeOnPost = async(req, res) => {
 
     }
 
-    const newRecipe = new Recipe({
-      name: req.body.name,
-      description: req.body.description,
-      email: req.body.email,
-      ingredients: req.body.ingredients,
-      category: req.body.category,
-      image: newImageName
-    });
+    // const newRecipe = new Recipe({
+    //   name: req.body.name,
+    //   description: req.body.description,
+    //   email: req.body.email,
+    //   ingredients: req.body.ingredients,
+    //   category: req.body.category,
+    //   image: newImageName
+    // });
     
-    await newRecipe.save();
+    // await newRecipe.save();
 
-    req.flash('infoSubmit', 'Recipe has been added.')
+    // req.flash('infoSubmit', 'Recipe has been added.')
+    // res.redirect('/submit-recipe');
+
+    // send email to admin
+    // Send email to admin
+    const nodemailer = require('nodemailer');
+
+    // Create a transporter using SMTP
+    let transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false, // Use TLS
+      auth: {
+        user: 'balance2eat@gmail.com', // Your Gmail address
+        pass: process.env.GMAIL_APP_PASSWORD // Your Gmail app password
+      }
+    });
+
+    // Prepare email content
+    let mailOptions = {
+      from: req.body.email,
+      to: 'balance2eat@gmail.com',
+      subject: 'New Recipe Submission',
+      text: `
+        New recipe submitted:
+        
+        Name: ${req.body.name}
+        Description: ${req.body.description}
+        Email: ${req.body.email}
+        Ingredients: ${req.body.ingredients}
+        Category: ${req.body.category}
+        Image: ${newImageName}
+      `
+    };
+
+    // Send email
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log('Error sending email:', error);
+      } else {
+        console.log('Email sent:', info.response);
+      }
+    });
+
+    // Save the recipe and redirect (uncomment these lines when ready)
+    // const newRecipe = new Recipe({
+    //   name: req.body.name,
+    //   description: req.body.description,
+    //   email: req.body.email,
+    //   ingredients: req.body.ingredients,
+    //   category: req.body.category,
+    //   image: newImageName
+    // });
+    
+    // await newRecipe.save();
+
+    req.flash('infoSubmit', 'Recipe has been submitted and an email has been sent to the admin.')
     res.redirect('/submit-recipe');
   } catch (error) {
     // res.json(error);

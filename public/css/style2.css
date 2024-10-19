@@ -43,6 +43,7 @@ img {
     padding: 15px 0;
     border-color: #f2f2f2;
     backdrop-filter: blur(20px);
+    margin-left: -0.4%;
 }
 
 .main-navigation {
@@ -51,7 +52,6 @@ img {
     height: 100%;
     justify-content: space-between;
     align-items: center;
-    margin-left:12%;
 }
 
 .main-navigation .menu li {
@@ -219,7 +219,7 @@ ul {
     }
 
     .container.header-logo{
-        margin-left:0;
+        margin-left:0.8%;
     }
 }
 
@@ -717,11 +717,9 @@ p {
     background-size: contain;
     background-repeat: repeat;
     border-radius: 100px 100px 50px 50px;
+    margin-bottom: 10%;
 }
 
-.menu-tab-wp {
-    margin-bottom: 80px;
-}
 
 .menu-tab ul {
     padding: 10px;
@@ -809,6 +807,10 @@ p {
     margin-bottom: 15px;
 }
 
+a.col.text-center:hover  {
+    color: inherit;
+}
+
 .dish-title {
     padding: 0 30px;
 }
@@ -874,6 +876,7 @@ p {
     margin: 30px 0 30px;
     padding-bottom: 30px;
 }
+
 
 .dist-bottom-row ul li {
     display: flex;
@@ -1720,9 +1723,7 @@ p {
     .dist-img {
         margin-top: -80px;
     }
-    .menu-tab-wp {
-        margin-bottom: 60px;
-    }
+    
     .dish-box {
         margin: 80px 0 30px;
     }

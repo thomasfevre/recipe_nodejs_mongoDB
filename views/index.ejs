@@ -214,7 +214,7 @@
                                 <div class="category__img category__img--large">
                                   <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
                                 </div>
-                              </a>
+                              
                                 <div class="dish-title">
                                     <h3 class="h3-title"><%= recipe.name %></h3>
                                     <p>120 calories</p>
@@ -251,14 +251,17 @@
             </div>
         </div>
     </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+      <a href="/explore-latest" class="sec-btn">Show More</a>
+    </div>
 </section>
 <!-- New categories end-->
 
 <!-- Categories Start -->
 
-
+<h3 class="h3-title">Categories</h3>
 <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
-
 
   <% if(categories != '') { %>
     <% categories.forEach(function(category, index) { %>
@@ -384,27 +387,12 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- Submit - Start -->
 <section class="px-4 py-5 my-5 text-center">
   <img src="/img/publish-recipe.png" class="d-block mx-auto mb-4 img-fluid" alt="Publish your recipe for FREE today" width="566" height="208" loading="lazy">
-  <h1 class="display-5 fw-bold">Publish your recipe for FREE today</h1>
+  <h1 class="display-5 fw-bold">Have a Recipe to share?</h1>
   <div class="col-lg-6 mx-auto">
-    <p class="lead mb-4">Publish your Recipe in front of thousands of people for free.</p>
+    <p class="lead mb-4">Publish your Recipe here, it will be reviewed by our team.</p>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
       <a href="/submit-recipe" class="btn btn-primary btn-dark btn-lg">Submit Recipe</a>
     </div>
