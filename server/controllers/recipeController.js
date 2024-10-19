@@ -1,6 +1,7 @@
 require('../models/database');
 const Category = require('../models/Category');
 const Recipe = require('../models/Recipe');
+const nodemailer = require('nodemailer');
 
 /**
  * GET /
@@ -12,17 +13,15 @@ exports.homepage = async(req, res) => {
     const limitNumber2 = 10;
     const categories = await Category.find({}).limit(limitNumber);
     const latest = await Recipe.find({}).sort({_id: -1}).limit(limitNumber);
-    const thai = await Recipe.find({ 'category': 'Thai' }).limit(limitNumber);
-    const american = await Recipe.find({ 'category': 'American' }).limit(limitNumber);
-    const chinese = await Recipe.find({ 'category': 'Chinese' }).limit(limitNumber);
+   
 
-    const allMeals = await Recipe.find({ 'meal_type': 'All' }).limit(limitNumber2);
-    const breakfastMeals = await Recipe.find({ 'meal_type': 'Breakfast' }).limit(limitNumber2);
-    const lunchMeals = await Recipe.find({ 'meal_type': 'Lunch' }).limit(limitNumber2);
-    const dinnerMeals = await Recipe.find({ 'meal_type': 'Dinner' }).limit(limitNumber2);
-    const snackMeals = await Recipe.find({ 'meal_type': 'Snack' }).limit(limitNumber2);
+    const allMeals = await Recipe.find({ 'category': 'All' }).limit(limitNumber2);
+    const breakfastMeals = await Recipe.find({ 'category': 'Breakfast' }).limit(limitNumber2);
+    const lunchMeals = await Recipe.find({ 'category': 'Lunch' }).limit(limitNumber2);
+    const dinnerMeals = await Recipe.find({ 'category': 'Dinner' }).limit(limitNumber2);
+    const snackMeals = await Recipe.find({ 'category': 'Snack' }).limit(limitNumber2);
 
-    const food = { latest, thai, american, chinese, allMeals, breakfastMeals, lunchMeals, dinnerMeals, snackMeals };
+    const food = { latest,  allMeals, breakfastMeals, lunchMeals, dinnerMeals, snackMeals };
     const meal_type = ["All", "Breakfast", "Lunch", "Dinner", "Snack"];
 
     res.render('index', { title: 'Cooking Blog - Home', categories, food, meal_type } );
@@ -155,7 +154,7 @@ exports.submitRecipeOnPost = async(req, res) => {
     } else {
 
       imageUploadFile = req.files.image;
-      newImageName = Date.now() + imageUploadFile.name;
+      newImageName = req.body.email + "_" + imageUploadFile.name+ "_" + new Date().toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }).replace(/[\/,:]/g, '_') ;
 
       uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
 
@@ -180,8 +179,7 @@ exports.submitRecipeOnPost = async(req, res) => {
     // res.redirect('/submit-recipe');
 
     // send email to admin
-    // Send email to admin
-    const nodemailer = require('nodemailer');
+   
 
     // Create a transporter using SMTP
     let transporter = nodemailer.createTransport({
@@ -203,10 +201,14 @@ exports.submitRecipeOnPost = async(req, res) => {
         New recipe submitted:
         
         Name: ${req.body.name}
-        Description: ${req.body.description}
+        Author: ${req.body.author}
+        Small Description: ${req.body.smallDescription}
+        Full Description: ${req.body.fullDescription}
         Email: ${req.body.email}
         Ingredients: ${req.body.ingredients}
         Category: ${req.body.category}
+        Type: ${req.body.type}
+        Tags: ${req.body.tags}
         Image: ${newImageName}
       `
     };
@@ -237,7 +239,7 @@ exports.submitRecipeOnPost = async(req, res) => {
   } catch (error) {
     // res.json(error);
     req.flash('infoErrors', error);
-    res.redirect('/submit-recipe');
+    // res.redirect('/submit-recipe');
   }
 }
 

@@ -5,7 +5,15 @@ const recipeSchema = new mongoose.Schema({
     type: String,
     required: 'This field is required.'
   },
-  description: {
+  author: {
+    type: String,
+    required: 'This field is required.'
+  },
+  smallDescription: {
+    type: String,
+    required: 'This field is required.',
+  },
+  fullDescription: {
     type: String,
     required: 'This field is required.'
   },
@@ -17,15 +25,18 @@ const recipeSchema = new mongoose.Schema({
     type: Array,
     required: 'This field is required.'
   },
-  meal_type: {
-    type: String,
-    enum: ['All', 'Breakfast', 'Lunch', 'Dinner', 'Snack'],
-    required: 'This field is required.'
-  },
   category: {
     type: String,
-    enum: ['Thai', 'American', 'Chinese', 'Mexican', 'Indian'],
+    enum: ['All', 'Breakfast', 'Lunch', 'Dinner'],
     required: 'This field is required.'
+  },
+  type: {
+    type: String,
+    enum: ['Full-meal', 'Side-dish', 'Dessert', 'Snack', 'Other'],
+    required: 'This field is required.'
+  },
+  tags: {
+    type: Array,
   },
   image: {
     type: String,

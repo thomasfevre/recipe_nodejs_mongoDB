@@ -27,25 +27,39 @@
 
         <div class="col-12">
           <label for="email" class="form-label">Email</label>
-          <input type="email" name="email" id="email" class="form-control">
+          <input type="email" name="email" id="email" class="form-control" placeholder="ex: mail@example.com" required>
+        </div>
+
+        <div class="col-12">
+          <label for="author" class="form-label">Name</label>
+          <small class="form-text text-muted">This will be your public display name.</small>
+          <input type="text" name="author" id="author" class="form-control" placeholder="ex: John" required>
         </div>
 
         <div class="col-12">
           <label for="name" class="form-label">Recipe Name</label>
-          <input type="text" name="name" id="name" class="form-control" required>
+          <input type="text" name="name" id="name" class="form-control" placeholder="ex: Chicken Tikka Masala" required>
         </div>
         
         <div class="col-12">
-          <label for="description" class="form-label">Description</label>
-          <textarea name="description" id="description" class="form-control" cols="30" rows="4"></textarea>
+          <label for="smallDescription" class="form-label">Quick Description</label>
+          <small class="form-text text-muted">This is one sentence about your recipe.</small>
+          <textarea required name="smallDescription" id="smallDescription" class="form-control" cols="30" rows="1"></textarea>
+        </div>
+
+        <div class="col-12">
+          <label for="fullDescription" class="form-label">Full Description</label>
+          <small class="form-text text-muted">Describe your recipe and all the steps.</small>
+          <textarea required name="fullDescription" id="fullDescription" class="form-control" cols="30" rows="4"></textarea>
         </div>
 
         <div class="col-12">
           <label for="name" class="form-label">Ingredients</label><br>
-          <small>Example: Ice</small>
+         
           <div class="ingredientList">
-            <div class="ingredeintDiv mb-1">
-              <input type="text" name="ingredients" class="form-control">
+            <div class="ingredientDiv mb-1 d-flex">
+              <input type="text" name="ingredients" class="form-control" placeholder="ex: Salt">
+              <button type="button" class="btn btn-outline-danger remove-ingredient ms-2">Remove</button>
             </div>
           </div>
         </div>
@@ -56,19 +70,37 @@
 
         <div class="col-12">
           <label for="category">Select Category</label>
-          <select class="form-select form-control" name="category" aria-label="Category">
+          <select class="form-select form-control" name="category" aria-label="Category" required>
             <option selected>Select Category</option>
-            <option value="Thai">Thai</option>
-            <option value="American">American</option>
-            <option value="Chinese">Chinese</option>
-            <option value="Mexican">Mexican</option>
-            <option value="Indian">Indian</option>
+            
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="All">Other</option>
           </select>
         </div>
 
         <div class="col-12">
+          <label for="type">Select Type</label>
+          <select class="form-select form-control" name="type" aria-label="Type" required>
+            <option selected>Select Type</option>
+            
+            <option value="Full-meal">Full-meal</option>
+            <option value="Side-Dish">Side-Dish</option>
+            <option value="Desert">Desert</option>
+            <option value="Snack">Snack</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="col-12">
+          <label for="tags" class="form-label">Tags</label>
+          <input type="text" name="tags" id="tags" class="form-control" placeholder="ex: Quick, Easy, Fancy" >
+        </div>
+
+        <div class="col-12">
           <label for="image">Product Image</label>
-          <input type="file" class="form-control" name="image" accept="image/*">
+          <input type="file" class="form-control" name="image" accept="image/*" required>
         </div>
 
         <div class="col-12">

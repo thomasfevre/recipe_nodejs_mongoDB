@@ -141,17 +141,7 @@ jQuery(window).on('load', function () {
 
         }
     }
-    // Initialize MixItUp
-    var mixer = mixitup('#menu-dish', {
-        selectors: {
-            target: '.dish-box-wp',
-            control: '.filter'
-        },
-        animation: {
-            effects: 'fade',
-            easing: 'ease-in-out'
-        }
-    });
+    
 });
 
 // Scroll to top button
