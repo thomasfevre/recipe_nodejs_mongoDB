@@ -154,3 +154,20 @@ jQuery(window).on('load', function () {
     });
 });
 
+// Scroll to top button
+const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+window.onscroll = function() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    scrollToTopBtn.style.opacity = "1";
+  } else {
+    scrollToTopBtn.style.opacity = "0";
+  }
+};
+
+scrollToTopBtn.addEventListener("click", function() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});

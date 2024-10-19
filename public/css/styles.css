@@ -64,3 +64,31 @@ a { color: var(--bs-dark); }
   width: 100%;
   object-fit: cover;
 }
+
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 30px;
+  font-size: 18px;
+  opacity: 0;
+  transition: opacity 0.3s, background-color 0.3s, color 0.3s;
+}
+
+#scrollToTopBtn:hover {
+  background-color: var(--primary-color);
+  /* color: #fff; */
+  border-color: #0d0d25;
+  box-shadow: inset 9px 9px 12px #cccccc, inset -9px -9px 12px #ffffff;
+  color: #0d0d25;
+}
+
+/* Ensure the icon is vertically centered */
+#scrollToTopBtn i {
+  vertical-align: middle;
+}
