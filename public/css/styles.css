@@ -24,6 +24,11 @@ a { color: var(--bs-dark); }
   display: block;
   text-decoration: none;
   transition: 250ms all;
+  border-radius: 10px;
+  margin-right: 1%;
+  padding-top: 1%;
+  width: 10vw;
+  box-shadow: inset 6px 6px 8px #dadada, inset -6px -6px 8px #ffffff;
 }
 
 .category__link:hover {

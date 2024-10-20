@@ -23,8 +23,9 @@ exports.homepage = async(req, res) => {
 
     const food = { latest,  allMeals, breakfastMeals, lunchMeals, dinnerMeals, snackMeals };
     const meal_type = ["All", "Breakfast", "Lunch", "Dinner", "Snack"];
+    const subCategories = ['Full-Meal', 'Side-Dish', 'Snack', 'Quick & Easy', 'Fancy Meal', 'Dessert'];
 
-    res.render('index', { title: 'Cooking Blog - Home', categories, food, meal_type } );
+    res.render('index', { title: 'Cooking Blog - Home', categories, food, meal_type, subCategories } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
@@ -35,10 +36,10 @@ exports.homepage = async(req, res) => {
  * Categories 
 */
 exports.exploreCategories = async(req, res) => {
-  try {
-    const limitNumber = 20;
-    const categories = await Category.find({}).limit(limitNumber);
-    res.render('categories', { title: 'Cooking Blog - Categories', categories } );
+  try {    
+    const categories = ['Breakfast', 'Lunch', 'Dinner'];
+    const subCategories = ['Full-Meal', 'Side-Dish', 'Snack', 'Quick & Easy', 'Fancy Meal', 'Dessert'];
+    res.render('categories', { title: 'Cooking Blog - Categories', categories, subCategories } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }

@@ -58,19 +58,19 @@
                             <ul class="filters">
                                 <div class="filter-active"></div>
                                 <li class="filter" data-filter=".all, .breakfast, .lunch, .dinner" aria-label="all">
-                                    <img src="/images/menu-1.png" alt="">
+                                    <img src="/img/bacon_eggs.png" alt="" height="30" width="60">
                                     All
                                 </li>
                                 <li class="filter" data-filter=".breakfast" aria-label="breakfast">
-                                    <img src="/images/menu-2.png" alt="">
+                                    <img src="/img/Breakfast.png" alt="" height="30" width="60">
                                     Breakfast
                                 </li>
                                 <li class="filter" data-filter=".lunch" aria-label="lunch">
-                                    <img src="/images/menu-3.png" alt="">
+                                    <img src="/img/Lunch.png" alt="" height="30" width="60">
                                     Lunch
                                 </li>
                                 <li class="filter" data-filter=".dinner" aria-label="dinner">
-                                    <img src="/images/menu-4.png" alt="">
+                                    <img src="/img/Dinner.png" alt="" height="30" width="60">
                                     Dinner
                                 </li>
                             </ul>
@@ -260,25 +260,25 @@
 
 <!-- Categories Start -->
 
-<h3 class="h3-title">Categories</h3>
-<div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
+<div class="d-flex justify-content-center">
+  <h3>Get Inspired</h3>
+</div>
+<div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4 justify-content-center">
 
-  <% if(categories != '') { %>
-    <% categories.forEach(function(category, index) { %>
-      <a href="/categories/<%- category.name %>" class="col text-center category__link">
-        <div class="category__img shadow">
-          <img src="img/<%- category.image %>" alt="<%- category.name %>" loading="lazy">
-        </div>
-        <div class="pt-1"><%- category.name %></div>
-      </a>
+  <% if(typeof subCategories !== 'undefined' && subCategories.length > 0) { %>
+    <% subCategories.forEach(function(subCategory, index) { %>
+      <a href="/categories/<%= subCategory %>" class="col text-center category__link shadow-lg">
+        <img src="/img/<%= subCategory %>.png" alt="<%- subCategory %>" loading="lazy" height="50" width="70">
+      <div class="pt-4"><%= subCategory %></div>
+    </a>
     <% }) %>
   <% } %>
 
-  <a href="/categories" class="col text-center category__link">
-    <div class="category__img shadow">
-      <img src="img/view-all.jpg" alt="View All Categories" loading="lazy">
-    </div>
-    <div class="pt-1">View All</div>
+  <a href="/categories" class="col text-center category__link shadow-lg">
+    
+      <img src="img/Full-Meal.png" alt="View All Categories" loading="lazy">
+    
+    <div class="pt-4">View All</div>
   </a>
 
 </div>
