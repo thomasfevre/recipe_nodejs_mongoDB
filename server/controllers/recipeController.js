@@ -9,23 +9,21 @@ const nodemailer = require('nodemailer');
 */
 exports.homepage = async(req, res) => {
   try {
-    const limitNumber = 5;
-    const limitNumber2 = 10;
-    const categories = await Category.find({}).limit(limitNumber);
+    const limitNumber = 6;
     const latest = await Recipe.find({}).sort({_id: -1}).limit(limitNumber);
    
 
-    const allMeals = await Recipe.find({ 'category': 'All' }).limit(limitNumber2);
-    const breakfastMeals = await Recipe.find({ 'category': 'Breakfast' }).limit(limitNumber2);
-    const lunchMeals = await Recipe.find({ 'category': 'Lunch' }).limit(limitNumber2);
-    const dinnerMeals = await Recipe.find({ 'category': 'Dinner' }).limit(limitNumber2);
-    const snackMeals = await Recipe.find({ 'category': 'Snack' }).limit(limitNumber2);
+    const allMeals = await Recipe.find({ 'category': 'All' }).limit(limitNumber);
+    const breakfastMeals = await Recipe.find({ 'category': 'Breakfast' }).limit(limitNumber);
+    const lunchMeals = await Recipe.find({ 'category': 'Lunch' }).limit(limitNumber);
+    const dinnerMeals = await Recipe.find({ 'category': 'Dinner' }).limit(limitNumber);
+    const snackMeals = await Recipe.find({ 'category': 'Snack' }).limit(limitNumber);
 
     const food = { latest,  allMeals, breakfastMeals, lunchMeals, dinnerMeals, snackMeals };
     const meal_type = ["All", "Breakfast", "Lunch", "Dinner", "Snack"];
     const subCategories = ['Full-Meal', 'Side-Dish', 'Snack', 'Quick & Easy', 'Fancy Meal', 'Dessert'];
 
-    res.render('index', { title: 'Cooking Blog - Home', categories, food, meal_type, subCategories } );
+    res.render('index', { title: 'Cooking Blog - Home', food, meal_type, subCategories } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
