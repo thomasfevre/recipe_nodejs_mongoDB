@@ -1,0 +1,23 @@
+<div class="second_page">
+
+  <h1 class="pb-4 pt-4"><%= title %></h1>
+
+  <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
+    <% if(recipes != '') { %>
+      <% recipes.forEach(function(recipe, index){ %>
+        <a href="/recipe/<%= recipe._id %>" class="col text-center recipe__link shadow">
+          <div class="recipe__img">
+            <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+          </div>
+        
+          <div class="dish-title">
+              <h4 class="h4-title"><%= recipe.name %></h4>
+          </div>
+          
+        </a>
+      <% }) %>
+    <% } else { %>
+      <p>No items found.</p>
+    <% } %> 
+  </div>
+</div>

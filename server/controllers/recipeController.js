@@ -48,12 +48,13 @@ exports.exploreCategories = async(req, res) => {
  * GET /categories/:id
  * Categories By Id
 */
-exports.exploreCategoriesById = async(req, res) => { 
+exports.exploreRecipesByCategory = async(req, res) => { 
   try {
-    let categoryId = req.params.id;
+    let categoryName = req.params.name;
     const limitNumber = 20;
-    const categoryById = await Recipe.find({ 'category': categoryId }).limit(limitNumber);
-    res.render('categories', { title: 'Cooking Blog - Categoreis', categoryById } );
+    const recipes = await Recipe.find({ 'category': categoryName }).limit(limitNumber);
+    console.log(recipes);
+    res.render('recipe_list', { title: 'Recipes - ' + categoryName, recipes } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
@@ -67,7 +68,7 @@ exports.exploreRecipe = async(req, res) => {
   try {
     let recipeId = req.params.id;
     const recipe = await Recipe.findById(recipeId);
-    res.render('recipe', { title: 'Cooking Blog - Recipe', recipe } );
+    res.render('recipe', { title: 'Recipes', recipe } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
@@ -97,7 +98,7 @@ exports.exploreLatest = async(req, res) => {
   try {
     const limitNumber = 20;
     const recipe = await Recipe.find({}).sort({ _id: -1 }).limit(limitNumber);
-    res.render('explore-latest', { title: 'Cooking Blog - Explore Latest', recipe } );
+    res.render('recipe_list', { title: 'Cooking Blog - Explore Latest', recipe } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }

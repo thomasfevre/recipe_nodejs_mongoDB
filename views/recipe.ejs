@@ -17,7 +17,11 @@
     <div class="col-12 col-md-8">
       <div class="row">
         <div class="col-12"><h1><%- recipe.name %></h1></div>
-        <div class="col-12 mb-4"><i class="bi bi-tag"></i> <%- recipe.category %></div>
+        <div class="col-12 d-flex">
+          <div class="me-3"><i class="bi bi-egg-fried"></i> <%- recipe.category %></div>
+          <div class="me-3"><i class="bi bi-info-circle"></i> <%- recipe.type %></div>
+          <div><i class="bi bi-tag"></i> <%- recipe.tags %></div>
+        </div>
         <div class="col-12" style="white-space: pre-line;">
           <h4>Cooking Instructions</h4>
           <%- recipe.description %>

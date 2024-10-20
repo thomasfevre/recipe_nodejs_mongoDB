@@ -8,7 +8,7 @@ const recipeController = require('../controllers/recipeController');
 router.get('/', recipeController.homepage);
 router.get('/recipe/:id', recipeController.exploreRecipe );
 router.get('/categories', recipeController.exploreCategories);
-router.get('/categories/:id', recipeController.exploreCategoriesById);
+router.get('/categories/:name', recipeController.exploreRecipesByCategory);
 router.post('/search', recipeController.searchRecipe);
 router.get('/explore-latest', recipeController.exploreLatest);
 router.get('/explore-random', recipeController.exploreRandom);
