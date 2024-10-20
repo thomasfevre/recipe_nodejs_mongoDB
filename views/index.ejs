@@ -267,7 +267,7 @@
 
   <% if(typeof subCategories !== 'undefined' && subCategories.length > 0) { %>
     <% subCategories.forEach(function(subCategory, index) { %>
-      <a href="/categories/<%= subCategory %>" class="col text-center category__link shadow-lg">
+      <a href="/sub-categories/<%= subCategory %>" class="col text-center category__link shadow-lg">
         <img src="/img/<%= subCategory %>.png" alt="<%- subCategory %>" loading="lazy" height="50" width="70">
       <div class="pt-4"><%= subCategory %></div>
     </a>
@@ -276,7 +276,7 @@
 
   <a href="/categories" class="col text-center category__link shadow-lg">
     
-      <img src="img/Full-Meal.png" alt="View All Categories" loading="lazy">
+      <img src="img/Full-Meal.png" alt="View All Categories" loading="lazy" height="50" width="70">
     
     <div class="pt-4">View All</div>
   </a>

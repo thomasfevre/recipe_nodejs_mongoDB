@@ -36,8 +36,8 @@ exports.homepage = async(req, res) => {
 exports.exploreCategories = async(req, res) => {
   try {    
     const categories = ['Breakfast', 'Lunch', 'Dinner'];
-    const subCategories = ['Full-Meal', 'Side-Dish', 'Snack', 'Quick & Easy', 'Fancy Meal', 'Dessert'];
-    res.render('categories', { title: 'Cooking Blog - Categories', categories, subCategories } );
+    const types = ['Full-Meal', 'Side-Dish', 'Snack', 'Dessert'];
+    res.render('categories', { title: 'Cooking Blog - Categories', categories, types } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
@@ -45,8 +45,8 @@ exports.exploreCategories = async(req, res) => {
 
 
 /**
- * GET /categories/:id
- * Categories By Id
+ * GET /categories/:name
+ * Categories By name
 */
 exports.exploreRecipesByCategory = async(req, res) => { 
   try {
@@ -55,6 +55,54 @@ exports.exploreRecipesByCategory = async(req, res) => {
     const recipes = await Recipe.find({ 'category': categoryName }).limit(limitNumber);
     console.log(recipes);
     res.render('recipe_list', { title: 'Recipes - ' + categoryName, recipes } );
+  } catch (error) {
+    res.status(500).send({message: error.message || "Error Occured" });
+  }
+} 
+
+/**
+ * GET /type/:name
+ * Categories By name
+*/
+exports.exploreRecipesByType = async(req, res) => { 
+  try {
+    let typeName = req.params.name;
+    const limitNumber = 20;
+    const recipes = await Recipe.find({ 'type': typeName }).limit(limitNumber);
+    console.log(recipes);
+    res.render('recipe_list', { title: 'Recipes - ' + typeName, recipes } );
+  } catch (error) {
+    res.status(500).send({message: error.message || "Error Occured" });
+  }
+} 
+
+/**
+ * GET /type/:name
+ * Categories By name
+*/
+exports.exploreRecipesByTags = async(req, res) => { 
+  try {
+    let tagsName = req.params.name;
+    const limitNumber = 20;
+    const recipes = await Recipe.find({ 'type': tagsName }).limit(limitNumber);
+    console.log(recipes);
+    res.render('recipe_list', { title: 'Recipes - ' + tagsName, recipes } );
+  } catch (error) {
+    res.status(500).send({message: error.message || "Error Occured" });
+  }
+} 
+
+/**
+ * GET /type/:name
+ * Categories By name
+*/
+exports.exploreRecipesByTypeOrTags = async(req, res) => { 
+  try {
+    let param = req.params.name;
+    const limitNumber = 20;
+    const recipes = await Recipe.find({ 'type': param, 'tags': param }).limit(limitNumber);
+    console.log(recipes);
+    res.render('recipe_list', { title: 'Recipes - ' + param, recipes } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }

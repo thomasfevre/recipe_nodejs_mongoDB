@@ -747,7 +747,7 @@ p {
 .filter-active {
     position: absolute;
     left: 0;
-    top: 11px;
+    /* top: 11px; */
     min-height: 50px;
     z-index: -1;
     margin-left:2px;
