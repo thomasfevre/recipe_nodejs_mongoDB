@@ -8,5 +8,5 @@ db.once('open', function(){
 });
 
 // Models
-require('./Category');
+require('./article');
 require('./Recipe');

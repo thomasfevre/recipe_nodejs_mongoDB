@@ -1,0 +1,62 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <!-- Articles List (3/4 width) -->
+    <div class="col-md-9 pt-5">
+      <h3>Latest Articles</h3>
+      <div id="articlesList">
+        <% if(articles != '') { %>
+          <% articles.forEach(function(article, index){ %>
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title"><%= article.title %></h5>
+                <p class="card-text"><%= article.summary %></p>
+                <p class="card-text"><small class="text-muted">Posted on <%= article.createdAt.toDateString() %></small></p>
+                <a href="/article/<%= article._id %>" class="btn btn-primary">Read More</a>
+              </div>
+            </div>
+          <% }) %>
+        <% } else { %>
+          <p>No articles found.</p>
+        <% } %>
+      </div>
+    </div>
+
+    <!-- Sidebar (1/4 width) -->
+    <div class="col-md-3">
+      <!-- Small explanation of the page -->
+      <div class="mb-4 pt-5">
+        <h3 class="pt-5">What's here ?</h3>
+        <p>Welcome to my Health & Wellness Blog! Here you'll find the latest articles on nutrition, fitness, mental health, and overall well-being. Stay informed and inspired on your journey to a healthier lifestyle.</p>
+        
+      </div>
+
+      <!-- Tags List -->
+      <div>
+        <h3>Tags</h3>
+        <div id="tagsList">
+          <% if(tags != '') { %>
+            <% tags.forEach(function(tag){ %>
+              <a href="#" class="badge bg-secondary text-decoration-none link-light"><%= tag %></a>
+            <% }) %>
+          <% } else { %>
+            <p>No tags found.</p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Client-side JavaScript for search functionality
+  document.getElementById('searchForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const searchTerm = document.getElementById('searchInput').value;
+    // Here you would typically make an AJAX call to your server to get filtered results
+    // For now, we'll just log the search term
+    console.log('Searching for:', searchTerm);
+    // TODO: Implement AJAX call to server and update articlesList with results
+  });
+</script>
+

@@ -18,7 +18,8 @@ router.get('/explore-random', recipeController.exploreRandom);
 router.get('/submit-recipe', recipeController.submitRecipe);
 router.post('/submit-recipe', recipeController.submitRecipeOnPost);
 router.get('/test', recipeController.test);
-router.get('/about', recipeController.about);
+router.get('/about', recipeController.getAboutPage);
+router.get('/health', recipeController.getHealthPage);
 
  
 module.exports = router;

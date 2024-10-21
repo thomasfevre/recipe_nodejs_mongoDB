@@ -1,7 +1,8 @@
 require('../models/database');
-const Category = require('../models/Category');
 const Recipe = require('../models/Recipe');
+const Article = require('../models/article');
 const nodemailer = require('nodemailer');
+
 
 /**
  * GET /
@@ -186,11 +187,12 @@ exports.test = async(req, res) => {
   res.render('test', { title: 'Cooking Blog - Test', infoErrorsObj, infoSubmitObj  } );
 }
 
-exports.about = async(req, res) => {
+exports.getAboutPage = async(req, res) => {
   const infoErrorsObj = req.flash('infoErrors');
   const infoSubmitObj = req.flash('infoSubmit');
   res.render('about', { title: 'Cooking Blog - About Me', infoErrorsObj, infoSubmitObj  } );
 }
+
 
 /**
  * POST /submit-recipe
@@ -328,74 +330,12 @@ exports.submitRecipeOnPost = async(req, res) => {
  * Dummy Data Example 
 */
 
-// async function insertDymmyCategoryData(){
-//   try {
-//     await Category.insertMany([
-//       {
-//         "name": "Thai",
-//         "image": "thai-food.jpg"
-//       },
-//       {
-//         "name": "American",
-//         "image": "american-food.jpg"
-//       }, 
-//       {
-//         "name": "Chinese",
-//         "image": "chinese-food.jpg"
-//       },
-//       {
-//         "name": "Mexican",
-//         "image": "mexican-food.jpg"
-//       }, 
-//       {
-//         "name": "Indian",
-//         "image": "indian-food.jpg"
-//       },
-//       {
-//         "name": "Spanish",
-//         "image": "spanish-food.jpg"
-//       }
-//     ]);
-//   } catch (error) {
-//     console.log('err', + error)
-//   }
-// }
-
-// insertDymmyCategoryData();
-
-
-// async function insertDymmyRecipeData(){
-//   try {
-//     await Recipe.insertMany([
-//       { 
-//         "name": "Recipe Name Goes Here",
-//         "description": `Recipe Description Goes Here`,
-//         "email": "recipeemail@raddy.co.uk",
-//         "ingredients": [
-//           "1 level teaspoon baking powder",
-//           "1 level teaspoon cayenne pepper",
-//           "1 level teaspoon hot smoked paprika",
-//         ],
-//         "category": "American", 
-//         "image": "southern-friend-chicken.jpg"
-//       },
-//       { 
-//         "name": "Recipe Name Goes Here",
-//         "description": `Recipe Description Goes Here`,
-//         "email": "recipeemail@raddy.co.uk",
-//         "ingredients": [
-//           "1 level teaspoon baking powder",
-//           "1 level teaspoon cayenne pepper",
-//           "1 level teaspoon hot smoked paprika",
-//         ],
-//         "category": "American", 
-//         "image": "southern-friend-chicken.jpg"
-//       },
-//     ]);
-//   } catch (error) {
-//     console.log('err', + error)
-//   }
-// }
-
-// insertDymmyRecipeData();
-
+exports.getHealthPage = async (req, res) => {
+  try {
+    const articles = await Article.find({}).sort({ createdAt: 'desc' }).limit(10);
+    const tags = await Article.distinct('tags');
+    res.render('health', { title: 'Health & Wellness Blog', articles, tags });
+  } catch (error) {
+    res.status(500).send({ message: error.message || "Error Occured" });
+  }
+}

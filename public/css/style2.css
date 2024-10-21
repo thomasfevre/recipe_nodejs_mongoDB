@@ -162,6 +162,14 @@ ul {
     display: block !important;
 }
 
+.for-mob {
+    display: none !important;
+}
+
+.header-search-form {
+    margin-top: 0;
+}
+
 .header-search-form button {
     background: transparent;
     border: none;
@@ -271,6 +279,13 @@ ul {
     }
     .for-mob {
         display: block !important;
+    }
+    .header-search-form {
+        margin-top: 5vh;
+    }
+    .header-search-form button {
+    
+        right: auto;
     }
     .site-header .container {
         max-width: 100%;

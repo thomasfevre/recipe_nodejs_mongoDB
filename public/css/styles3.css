@@ -27,7 +27,8 @@ body {
 
 section {
 	max-width: 1440px;
-	margin: 30px auto;
+	margin-top:5%;
+
 	gap: 30px;
 }
 
