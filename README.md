@@ -1,11 +1,17 @@
 # Recipe Blog - Using Node.js and MongoDB
 
+Preview : 
+https://balanced-food-blog.onrender.com
+
+Please be aware that it may take a few minutes to load the website the first time, if no one has visited the website in the last 30 minutes (Due to the FREE tier used on render.com)
+
 ## Create .env file
 Create a .env file to store your MongoDB database credentials
 
 Example only (copy the full connection string from MongoDB):
 ```
 MONGODB_URI = mongodb+srv://<username>:<password>@cluster0.6m5cz.mongodb.net/
+GMAIL_APP_PASSWORD = Google account generated App-specific password
 ```
 
 ## Installation
@@ -17,20 +23,3 @@ $ npm start
 ```
 
 
-### YouTube Video & Article
-
-[YouTube Video](https://youtu.be/OEdPH4fV7vY)
-
-[Read Article](https://raddy.dev/blog/how-to-build-a-recipe-blog-using-node-js-and-mongodb-express-ejs-mongoose-crud/)
-
-### YouTube Channel - Raddy
-
-[Subscribe to my YouTube Channel](https://www.youtube.com/channel/UCvXscyQ0cLzPZeNOeXI45Sw?sub_confirmation=1)
-
-### Website
-[www.raddy.dev](https://www.raddy.dev)
-
-### Donations
-[Via Paypal](https://www.paypal.com/donate/?hosted_button_id=YUH7JRDUN5QEY)
-
-[Buy me a Coffee](https://www.buymeacoffee.com/RaddyTheBrand)
