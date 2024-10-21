@@ -1,0 +1,289 @@
+*, *::before, *::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--base: #555;
+	--base-100: #f1f1f1;
+	--base-400: #555;
+	--base-800: #000;
+	--yellow: #ffda4b;
+	--yellow-100: #fffbe6;
+	--blue: #0a61ae;
+	--blue-100: #e2f8ff;
+	--blue-400: #61dafb;
+}
+
+body {
+	font-family: "Open Sans", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-size: 20px;
+	padding-bottom: 1000px;
+}
+
+section {
+	max-width: 1440px;
+	margin: 30px auto;
+	gap: 30px;
+}
+
+@media (max-width: 1440px) {
+	section {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+}
+
+.button {
+	display: inline-block;
+	padding: 10px 30px;
+	background-color: var(--blue);
+	color: var(--base-100);
+	border-radius: 10px;
+	transition: ease 0.3s all;
+}
+
+.button:hover {
+	text-decoration: none;
+	background-color: var(--base-800);
+}
+
+.button.white {
+	background-color: white;
+	color: var(--base-800);
+}
+
+.button.white:hover {
+	background-color: var(--base-100);
+	color: var(--base);
+}
+
+.button.black {
+	background-color: black;
+	color: white;
+}
+
+.button.black:hover {
+	background-color: var(--base);
+	color: var(--base-100);
+}
+
+h1 {
+	font-size: 64px;
+	line-height: 1;
+	margin-bottom: 10px;
+}
+
+h1 small {
+	display: block;
+	font-weight: 100;
+}
+
+@media (max-width: 1024px) {
+	h1 {
+		font-size: 48px;
+	}
+}
+
+.hero {
+	display: flex;
+}
+
+@media (max-width: 1024px) {
+	.hero {
+		flex-direction: column;
+	}
+}
+
+.hero-blue {
+	flex: 1;
+	background-color: var(--blue-100);
+	border-radius: 30px;
+	padding: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+@media (max-width: 768px) {
+	.hero-blue span {
+		display: none;
+	}
+}
+
+.hero-blue .call-to-action {
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.hero-blue .call-to-action a {
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+.hero-blue .social-links a:hover {
+	text-decoration: none;
+}
+
+.hero-yellow {
+	flex: 1;
+	background-color: var(--yellow);
+	border-radius: 30px;
+	padding: 0px 30px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+.hero-yellow img {
+	margin-top: -60px;
+	max-width: 420px;
+	margin-bottom: -10px;
+}
+
+.logos {
+	background-color: var(--base-100);
+	border-radius: 30px;
+	padding: 30px 0px;
+}
+
+@media (max-width: 1440px) {
+	.logos {
+		border-radius: 0px;
+	}
+}
+
+.logos .marquee {
+	width: 100vw;
+	max-width: 100%;
+	height: 128px;
+	overflow: hidden;
+	position: relative;
+}
+
+.logos .marquee .track {
+	position: absolute;
+	white-space: nowrap;
+	will-change: transform;
+	animation: marquee 40s linear infinite;
+	display: flex;
+	gap: 10px;
+}
+
+@keyframes marquee {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+h2 {
+	font-size: 64px;
+	line-height: 1;
+	margin-bottom: 10px;
+	text-align: center;
+	color: var(--base-800);
+	padding: 30px;
+}
+
+h2 small {
+	display: block;
+	font-weight: 100;
+	font-size: 0.5em;
+	color: var(--base);
+}
+
+@media (max-width: 1024px) {
+	h2 {
+		font-size: 48px;
+	}
+}
+
+h3 {
+	font-size: 32px;
+	font-weight: 600;
+	line-height: 1;
+	margin-bottom: 20px;
+	color: var(--base-800);
+}
+
+.skills .holder-blue {
+	background-color: var(--blue-100);
+	border-radius: 30px;
+	padding: 30px;
+	display: flex;
+}
+
+@media (max-width: 1024px) {
+	.skills .holder-blue {
+		flex-direction: column;
+	}
+}
+
+.skills .holder-blue .left-column {
+	flex: 1;
+}
+
+.skills .holder-blue .left-column ul {
+	list-style-type: none;
+	gap: 10px;
+	margin-right: 100px;
+	margin-bottom: 20px;
+}
+
+.skills .holder-blue .left-column ul li {
+	display: inline-block;
+	padding: 10px 20px;
+	border-radius: 15px;
+	margin-bottom: 10px;
+}
+
+.skills .holder-blue .left-column ul li {
+	background-color: var(--blue-400);
+}
+
+.skills .holder-blue .left-column .backend li {
+	background-color:cadetblue;
+	
+}
+
+.skills .holder-blue .left-column .databases li {
+	background-color: grey;
+	color:#d8e0e3;
+}
+
+.skills .holder-blue .left-column .blockchains li {
+	background-color: rebeccapurple;
+	color:#d8e0e3;
+}
+
+.skills .holder-blue .right-column {
+	flex: 1;
+}
+
+.skills .holder-blue .right-column p {
+	margin-bottom: 20px;
+}
+
+.db_blockchain_list {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.db_blockchain_list > div {
+	flex: 1;
+}
+
+
+
+@media (max-width: 768px) {
+	.db_blockchain_list {
+		flex-direction: column;
+	}
+}
