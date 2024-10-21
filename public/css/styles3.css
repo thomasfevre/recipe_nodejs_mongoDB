@@ -14,6 +14,7 @@
 	--blue: #0a61ae;
 	--blue-100: #e2f8ff;
 	--blue-400: #61dafb;
+	--blue-200: #4bcdff;
 }
 
 body {
@@ -128,9 +129,9 @@ h1 small {
 	text-decoration: none;
 }
 
-.hero-yellow {
+.hero-blue2 {
 	flex: 1;
-	background-color: var(--yellow);
+	background-color: var(--blue-200);
 	border-radius: 30px;
 	padding: 0px 30px;
 	display: flex;
@@ -138,7 +139,7 @@ h1 small {
 	align-items: flex-end;
 }
 
-.hero-yellow img {
+.hero-blue2 img {
 	margin-top: -60px;
 	max-width: 420px;
 	margin-bottom: -10px;
@@ -168,9 +169,10 @@ h1 small {
 	position: absolute;
 	white-space: nowrap;
 	will-change: transform;
-	animation: marquee 40s linear infinite;
+	animation: marquee 20s linear infinite;
 	display: flex;
 	gap: 10px;
+	width: 100%;
 }
 
 @keyframes marquee {
@@ -287,3 +289,13 @@ h3 {
 		flex-direction: column;
 	}
 }
+
+.logo__img {
+	/* display: flex; */
+	/* justify-content: center; */
+	/* align-items: center; */
+	height: 100px;
+	box-shadow: 0px 3px 6px rgba(0,0,0,.16);
+	/* overflow: hidden; */
+	border-radius: 8px;
+  }
