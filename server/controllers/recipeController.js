@@ -1,6 +1,6 @@
 require('../models/database');
 const Recipe = require('../models/Recipe');
-const Article = require('../models/article');
+const Article = require('../models/Article');
 const nodemailer = require('nodemailer');
 
 

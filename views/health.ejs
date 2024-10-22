@@ -1,62 +1,49 @@
-<div class="container-fluid">
+<div class="container-fluid health-container">
 
   <div class="row">
     <!-- Articles List (3/4 width) -->
     <div class="col-md-9 pt-5">
-      <h3>Latest Articles</h3>
-      <div id="articlesList">
+      <h2 class="section-title"><small>Latest</small>Articles</h2>
+      <div id="articlesList" class="article-grid">
         <% if(articles != '') { %>
           <% articles.forEach(function(article, index){ %>
-            <div class="card mb-3">
-              <div class="card-body">
-                <h5 class="card-title"><%= article.title %></h5>
-                <p class="card-text"><%= article.summary %></p>
-                <p class="card-text"><small class="text-muted">Posted on <%= article.createdAt.toDateString() %></small></p>
-                <a href="/article/<%= article._id %>" class="btn btn-primary">Read More</a>
+            <div class="article-card">
+              <div class="article-image" style="background-image: url('<%= article.image || '/imgs/default-article.jpg' %>');"></div>
+              <div class="article-content">
+                <h3 class="article-title"><%= article.title %></h3>
+                <p class="article-summary"><%= article.summary %></p>
+                <p class="article-date"><small class="text-muted">Posted on <%= article.createdAt.toDateString() %></small></p>
+                <a href="/article/<%= article._id %>" class="btn btn-primary read-more">Read More</a>
               </div>
             </div>
           <% }) %>
         <% } else { %>
-          <p>No articles found.</p>
+          <p class="no-articles">No articles found.</p>
         <% } %>
       </div>
     </div>
 
     <!-- Sidebar (1/4 width) -->
-    <div class="col-md-3">
+    <div class="col-md-3 sidebar">
       <!-- Small explanation of the page -->
-      <div class="mb-4 pt-5">
-        <h3 class="pt-5">What's here ?</h3>
-        <p>Welcome to my Health & Wellness Blog! Here you'll find the latest articles on nutrition, fitness, mental health, and overall well-being. Stay informed and inspired on your journey to a healthier lifestyle.</p>
-        
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">What's here?</h3>
+        <p class="sidebar-text">Welcome to my Health & Wellness Blog! Here you'll find the latest articles on nutrition, fitness, mental health, and overall well-being. Stay informed and inspired on your journey to a healthier lifestyle.</p>
       </div>
 
       <!-- Tags List -->
-      <div>
-        <h3>Tags</h3>
-        <div id="tagsList">
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Tags</h3>
+        <div id="tagsList" class="tags-list">
           <% if(tags != '') { %>
             <% tags.forEach(function(tag){ %>
-              <a href="#" class="badge bg-secondary text-decoration-none link-light"><%= tag %></a>
+              <a href="#" class="tag-badge"><%= tag %></a>
             <% }) %>
           <% } else { %>
-            <p>No tags found.</p>
+            <p class="no-tags">No tags found.</p>
           <% } %>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<script>
-  // Client-side JavaScript for search functionality
-  document.getElementById('searchForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const searchTerm = document.getElementById('searchInput').value;
-    // Here you would typically make an AJAX call to your server to get filtered results
-    // For now, we'll just log the search term
-    console.log('Searching for:', searchTerm);
-    // TODO: Implement AJAX call to server and update articlesList with results
-  });
-</script>
-

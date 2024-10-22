@@ -360,3 +360,150 @@ h3 {
 		grid-template-columns: 1fr;
 	}
 }
+
+/* Add these styles at the end of the file */
+
+.health-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 40px;
+  margin-top:5%;
+}
+
+.section-title {
+  font-size: 48px;
+  line-height: 1.2;
+  margin-top: -12%;
+  text-align: center;
+  color: var(--base-800);
+}
+
+.section-title small {
+  display: block;
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--base);
+}
+
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
+  gap: 30px;
+}
+
+.article-card {
+  background: linear-gradient(145deg, #ececec, #ffffff);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: 0.3s;
+  box-shadow: 10px 10px 20px #d1d1d1, -10px -10px 20px #ffffff;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 15px 15px 30px #d1d1d1, -15px -15px 30px #ffffff;
+}
+
+.article-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.article-content {
+  padding: 20px;
+}
+
+.article-title {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: var(--base-800);
+}
+
+.article-summary {
+  font-size: 14px;
+  color: var(--base-400);
+  margin-bottom: 15px;
+  line-height: normal;
+}
+
+.article-date {
+  font-size: 12px;
+  color: var(--base);
+  margin-bottom: 15px;
+}
+
+.read-more {
+  background: var(--blue);
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: 0.3s;
+  display: inline-block;
+}
+
+.read-more:hover {
+  background: var(--blue-800);
+  color: #fff;
+}
+
+.sidebar {
+  padding-top: 80px;
+}
+
+.sidebar-section {
+  background: linear-gradient(145deg, #ececec, #ffffff);
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+}
+
+.sidebar-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: var(--base-800);
+}
+
+.sidebar-text {
+  font-size: 14px;
+  color: var(--base-400);
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag-badge {
+  background: var(--blue-100);
+  color: var(--blue-800);
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.tag-badge:hover {
+  background: var(--blue-400);
+  color: #fff;
+}
+
+.no-articles, .no-tags {
+  text-align: center;
+  color: var(--base-400);
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    padding-top: 40px;
+  }
+  
+  .article-grid {
+    grid-template-columns: 1fr;
+  }
+}
