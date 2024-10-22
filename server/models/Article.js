@@ -17,10 +17,14 @@ const articleSchema = new mongoose.Schema({
     type: [String],
     default: []
   },
+  image: {
+    type: String,
+    required: 'This field is required.'
+  },
   createdAt: {
     type: Date,
     default: Date.now
   }
 });
 
-module.exports = mongoose.model('article', articleSchema);
+module.exports = mongoose.model('Article', articleSchema);

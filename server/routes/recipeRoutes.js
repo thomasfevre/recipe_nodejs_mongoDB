@@ -21,5 +21,8 @@ router.get('/test', recipeController.test);
 router.get('/about', recipeController.getAboutPage);
 router.get('/health', recipeController.getHealthPage);
 
+// Add this new route
+router.get('/article/:id', recipeController.viewArticle);
+
  
 module.exports = router;

@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-7 article-container">
+          <h3 class="mb-4"><%= article.title %></h3>
+          <div class="bottom">
+            <p class="text-muted">Posted on <%= article.createdAt.toDateString() %></p>
+            <p><%= article.summary %></p>
+            <div class="mb-4">
+              <% article.tags.forEach(function(tag){ %>
+                <span class="badge bg-secondary me-2"><%= tag %></span>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+        <div class="col-5">
+          <img src="<%= article.image %>" alt="<%= article.title %>" class="article_img mb-4 rounded">
+        </div>
+      </div>
+      <div class="article-content mt-4">
+        <%= article.content %>
+      </div>
+    </div>
+  </div>
+</div>
