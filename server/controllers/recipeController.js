@@ -339,3 +339,23 @@ exports.getHealthPage = async (req, res) => {
     res.status(500).send({ message: error.message || "Error Occured" });
   }
 }
+
+/**
+ * GET /article/:id
+ * View Article
+*/
+exports.viewArticle = async (req, res) => {
+  try {
+    const articleId = req.params.id;
+    const article = await Article.findById(articleId);
+    
+    if (!article) {
+      res.status(404).send('Article not found');
+      return;
+    }
+
+    res.render('article', { title: article.title, article });
+  } catch (error) {
+    res.status(500).send({ message: error.message || "Error Occurred" });
+  }
+}
