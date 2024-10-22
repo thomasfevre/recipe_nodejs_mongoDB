@@ -92,7 +92,6 @@ $(document).ready(function ($) {
 
 
 jQuery(window).on('load', function () {
-    $('body').removeClass('body-fixed');
 
     //activating tab of filter
     let targets = document.querySelectorAll(".filter");
