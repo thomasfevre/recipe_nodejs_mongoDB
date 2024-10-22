@@ -2,7 +2,10 @@
   --bs-font-sans-serif: 'Rubik', sans-serif;
 }
 
-.container-xxl { max-width: 1530px; }
+.container-xxl { 
+  max-width: 1530px;
+  background-color: white;
+}
 
 body {
   background-image: url("/img/i-like-food.svg");
@@ -122,3 +125,25 @@ a { color: var(--bs-dark); }
 #scrollToTopBtn i {
   vertical-align: middle;
 }
+
+.article_img {
+  height: 300px;
+}
+
+/* Add this to the end of your styles.css file */
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-left: 20px;
+}
+
+/* Update the parent container to have a relative position */
+.article-container {
+  position: relative;
+  height: 100%; /* Adjust this as needed */
+  min-height: 300px; /* Adjust this as needed */
+}
+
