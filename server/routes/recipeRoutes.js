@@ -13,6 +13,7 @@ router.get('/types/:name', recipeController.exploreRecipesByType);
 router.get('/tags/:name', recipeController.exploreRecipesByTags);
 router.get('/sub-categories/:name', recipeController.exploreRecipesByTypeOrTags);
 router.post('/search', recipeController.searchRecipe);
+router.post('/article-search', recipeController.searchArticle);
 router.get('/explore-latest', recipeController.exploreLatest);
 router.get('/explore-random', recipeController.exploreRandom);
 router.get('/submit-recipe', recipeController.submitRecipe);

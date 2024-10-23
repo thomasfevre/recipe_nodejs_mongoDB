@@ -24,7 +24,7 @@ exports.homepage = async(req, res) => {
     const meal_type = ["All", "Breakfast", "Lunch", "Dinner", "Snack"];
     const subCategories = ['Full-Meal', 'Side-Dish', 'Snack', 'Quick & Easy', 'Fancy Meal', 'Dessert'];
 
-    res.render('index', { title: 'Cooking Blog - Home', food, meal_type, subCategories } );
+    res.render('index', { req, title: 'Cooking Blog - Home', food, meal_type, subCategories } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
@@ -38,7 +38,7 @@ exports.exploreCategories = async(req, res) => {
   try {    
     const categories = ['Breakfast', 'Lunch', 'Dinner'];
     const types = ['Full-Meal', 'Side-Dish', 'Snack', 'Dessert'];
-    res.render('categories', { title: 'Cooking Blog - Categories', categories, types } );
+    res.render('categories', { req, title: 'Cooking Blog - Categories', categories, types } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
@@ -55,7 +55,7 @@ exports.exploreRecipesByCategory = async(req, res) => {
     const limitNumber = 20;
     const recipes = await Recipe.find({ 'category': categoryName }).limit(limitNumber);
     console.log(recipes);
-    res.render('recipe_list', { title: 'Recipes - ' + categoryName, recipes } );
+    res.render('recipe_list', { req, title: 'Recipes - ' + categoryName, recipes } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
@@ -71,7 +71,7 @@ exports.exploreRecipesByType = async(req, res) => {
     const limitNumber = 20;
     const recipes = await Recipe.find({ 'type': typeName }).limit(limitNumber);
     console.log(recipes);
-    res.render('recipe_list', { title: 'Recipes - ' + typeName, recipes } );
+    res.render('recipe_list', { req, title: 'Recipes - ' + typeName, recipes } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
@@ -87,7 +87,7 @@ exports.exploreRecipesByTags = async(req, res) => {
     const limitNumber = 20;
     const recipes = await Recipe.find({ 'type': tagsName }).limit(limitNumber);
     console.log(recipes);
-    res.render('recipe_list', { title: 'Recipes - ' + tagsName, recipes } );
+    res.render('recipe_list', { req, title: 'Recipes - ' + tagsName, recipes } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
@@ -103,7 +103,7 @@ exports.exploreRecipesByTypeOrTags = async(req, res) => {
     const limitNumber = 20;
     const recipes = await Recipe.find({ 'type': param, 'tags': param }).limit(limitNumber);
     console.log(recipes);
-    res.render('recipe_list', { title: 'Recipes - ' + param, recipes } );
+    res.render('recipe_list', { req, title: 'Recipes - ' + param, recipes } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
@@ -117,7 +117,7 @@ exports.exploreRecipe = async(req, res) => {
   try {
     let recipeId = req.params.id;
     const recipe = await Recipe.findById(recipeId);
-    res.render('recipe', { title: 'Recipes', recipe } );
+    res.render('recipe', { req, title: 'Recipes', recipe } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
@@ -132,7 +132,7 @@ exports.searchRecipe = async(req, res) => {
   try {
     let searchTerm = req.body.searchTerm;
     let recipe = await Recipe.find( { $text: { $search: searchTerm, $diacriticSensitive: true } });
-    res.render('search', { title: 'Cooking Blog - Search', recipe } );
+    res.render('search', { req, title: 'Cooking Blog - Search', recipe } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
@@ -147,7 +147,7 @@ exports.exploreLatest = async(req, res) => {
   try {
     const limitNumber = 20;
     const recipe = await Recipe.find({}).sort({ _id: -1 }).limit(limitNumber);
-    res.render('recipe_list', { title: 'Cooking Blog - Explore Latest', recipe } );
+    res.render('recipe_list', { req, title: 'Cooking Blog - Explore Latest', recipe } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
@@ -164,7 +164,7 @@ exports.exploreRandom = async(req, res) => {
     let count = await Recipe.find().countDocuments();
     let random = Math.floor(Math.random() * count);
     let recipe = await Recipe.findOne().skip(random).exec();
-    res.render('explore-random', { title: 'Cooking Blog - Explore Latest', recipe } );
+    res.render('explore-random', { req, title: 'Cooking Blog - Explore Latest', recipe } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
@@ -178,19 +178,19 @@ exports.exploreRandom = async(req, res) => {
 exports.submitRecipe = async(req, res) => {
   const infoErrorsObj = req.flash('infoErrors');
   const infoSubmitObj = req.flash('infoSubmit');
-  res.render('submit-recipe', { title: 'Cooking Blog - Submit Recipe', infoErrorsObj, infoSubmitObj  } );
+  res.render('submit-recipe', { req, title: 'Cooking Blog - Submit Recipe', infoErrorsObj, infoSubmitObj  } );
 }
 
 exports.test = async(req, res) => {
   const infoErrorsObj = req.flash('infoErrors');
   const infoSubmitObj = req.flash('infoSubmit');
-  res.render('test', { title: 'Cooking Blog - Test', infoErrorsObj, infoSubmitObj  } );
+  res.render('test', { req, title: 'Cooking Blog - Test', infoErrorsObj, infoSubmitObj  } );
 }
 
 exports.getAboutPage = async(req, res) => {
   const infoErrorsObj = req.flash('infoErrors');
   const infoSubmitObj = req.flash('infoSubmit');
-  res.render('about', { title: 'Cooking Blog - About Me', infoErrorsObj, infoSubmitObj  } );
+  res.render('about', { req, title: 'Cooking Blog - About Me', infoErrorsObj, infoSubmitObj  } );
 }
 
 
@@ -335,7 +335,7 @@ exports.getHealthPage = async (req, res) => {
   try {
     const articles = await Article.find({}).sort({ createdAt: 'desc' }).limit(10);
     const tags = await Article.distinct('tags');
-    res.render('health', { title: 'Health & Wellness Blog', articles, tags });
+    res.render('health', { req, title: 'Health & Wellness Blog', articles, tags });
   } catch (error) {
     res.status(500).send({ message: error.message || "Error Occured" });
   }
@@ -346,11 +346,24 @@ exports.getHealthPage = async (req, res) => {
  * View health Article page by Tag
 */
 exports.getArticlesByTag = async (req, res) => {
-  console.log(req.params.tag)
   try {
     const articles = await Article.find({ tags: req.params.tag}).sort({ createdAt: 'desc' }).limit(10);
     const tags = await Article.distinct('tags');
-    res.render('health', { title: 'Health & Wellness Blog', articles, tags });
+    res.render('health', { req, title: 'Health & Wellness Blog', articles, tags });
+  } catch (error) {
+    res.status(500).send({ message: error.message || "Error Occured" });
+  }
+}
+
+/**
+ * POST /article-search
+ * View health Article page by Search Term
+*/
+exports.searchArticle = async (req, res) => {
+  try {
+    const articles = await Article.find({ tags: req.body.searchTerm}).sort({ createdAt: 'desc' }).limit(10);
+    const tags = await Article.distinct('tags');
+    res.render('health', { req, title: 'Health & Wellness Blog', articles, tags });
   } catch (error) {
     res.status(500).send({ message: error.message || "Error Occured" });
   }
@@ -370,7 +383,7 @@ exports.viewArticle = async (req, res) => {
       return;
     }
 
-    res.render('article', { title: article.title, article });
+    res.render('article', { req, title: article.title, article });
   } catch (error) {
     res.status(500).send({ message: error.message || "Error Occurred" });
   }

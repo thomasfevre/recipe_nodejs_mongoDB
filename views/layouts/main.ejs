@@ -67,8 +67,8 @@
                           </form>
                         </nav>
                         <div class="header-right">
-                            <form action="/search" method="POST"  class="header-search-form for-des">
-                                <input type="search" name="searchTerm" class="form-input" placeholder="Search..." aria-label="Search">
+                            <form action="<%= req.originalUrl === '/health' ? '/article-search' : '/search' %>" method="POST"  class="header-search-form for-des">
+                                <input type="search" name="searchTerm" class="form-input" placeholder="<%= req.originalUrl === '/health' ? 'Search an Article' : 'Search a Recipe' %>" aria-label="Search">
                                 <button type="submit">
                                     <i class="uil uil-search"></i>
                                 </button>
