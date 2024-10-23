@@ -20,6 +20,7 @@ router.post('/submit-recipe', recipeController.submitRecipeOnPost);
 router.get('/test', recipeController.test);
 router.get('/about', recipeController.getAboutPage);
 router.get('/health', recipeController.getHealthPage);
+router.get('/health/:tag', recipeController.getArticlesByTag);
 
 // Add this new route
 router.get('/article/:id', recipeController.viewArticle);

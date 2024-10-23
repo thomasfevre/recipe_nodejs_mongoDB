@@ -327,12 +327,28 @@ exports.submitRecipeOnPost = async(req, res) => {
 
 
 /**
- * Dummy Data Example 
+ * GET /health
+ * View health Article page 
 */
 
 exports.getHealthPage = async (req, res) => {
   try {
     const articles = await Article.find({}).sort({ createdAt: 'desc' }).limit(10);
+    const tags = await Article.distinct('tags');
+    res.render('health', { title: 'Health & Wellness Blog', articles, tags });
+  } catch (error) {
+    res.status(500).send({ message: error.message || "Error Occured" });
+  }
+}
+
+/**
+ * GET /health/:tag
+ * View health Article page by Tag
+*/
+exports.getArticlesByTag = async (req, res) => {
+  console.log(req.params.tag)
+  try {
+    const articles = await Article.find({ tags: req.params.tag}).sort({ createdAt: 'desc' }).limit(10);
     const tags = await Article.distinct('tags');
     res.render('health', { title: 'Health & Wellness Blog', articles, tags });
   } catch (error) {

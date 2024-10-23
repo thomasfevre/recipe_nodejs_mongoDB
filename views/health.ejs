@@ -37,7 +37,7 @@
         <div id="tagsList" class="tags-list">
           <% if(tags != '') { %>
             <% tags.forEach(function(tag){ %>
-              <a href="#" class="tag-badge"><%= tag %></a>
+              <a href="/health/<%= tag %>" class="tag-badge"><%= tag %></a>
             <% }) %>
           <% } else { %>
             <p class="no-tags">No tags found.</p>
