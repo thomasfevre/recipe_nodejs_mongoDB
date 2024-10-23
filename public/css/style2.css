@@ -93,6 +93,7 @@ ul {
     font-weight: 500;
     padding: 5px 18px;
     border-radius: 30px;
+    font-size: medium;
 }
 
 .main-navigation .menu li a:hover, .main-navigation .menu li .active-menu, .main-navigation .menu .sub-menu li .active-sub-menu {
@@ -172,7 +173,7 @@ ul {
 }
 
 .header-search-form .form-input {
-    font-size: 14px;
+    font-size: 13px;
     padding-right: 40px;
     width: 200px;
     height: 40px;
@@ -1758,6 +1759,7 @@ a.col.text-center:hover  {
 
     .dish-title .h3-title {
         font-size:medium;
+        line-height: normal;
     }
     .dish-title p {
         font-size:medium;

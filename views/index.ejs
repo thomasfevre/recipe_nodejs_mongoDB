@@ -1,4 +1,3 @@
-
 <div class="js-parallax-scene">
   <div class="banner-shape-1 w-100" data-depth="0.30">
       <img src="/images/berry.png" alt="">
@@ -18,14 +17,16 @@
 </div>
 
   <div class="col-12 col-lg-6">
-    <h1 class="display-5 fw-bold mb-3">Welcome to my Balanced Food Blog</h1>
+    <h1 class="display-5 fw-bold mb-3">Bienvenue sur mon Blog Balanced Diet</h1>
+    <small class="text-muted">Balanced Diet = Alimentation équilibrée</small>
     <p class="lead">
-      Explore our diverse selection of healthy recipes that focus on balanced ingredients, allowing you to enjoy delicious meals without excess calories. Our dishes emphasize smart ingredient choices, making it easy to create satisfying meals that nourish your body while delighting your taste buds. Whether you're looking for light yet flavorful options or innovative ways to enjoy classic favorites, we've got you covered!
+      Explorez ma sélection diversifiée de recettes saines qui mettent l'accent sur des ingrédients équilibrés, vous permettant de savourer des repas délicieux sans calories excessives. Nos plats mettent l'accent sur des choix d'ingrédients intelligents, ce qui rend facile la création de repas satisfaisants qui nourrissent votre corps tout en régalant vos papilles. Que vous recherchiez des options légères mais savoureuses ou des moyens innovants de savourer vos plats préférés, j'ai ce qu'il vous faut!
     </p>
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-      <a href="/explore-latest" class="sec-btn">Explore Latest</a>
-      <a href="/explore-random" class="sec-btn">Show Random</a>
+      <a href="/explore-latest" class="sec-btn">Explorer les Dernières</a>
+      <span style="margin: 0 10px;">&nbsp;</span>
+      <a href="/explore-random" class="sec-btn">Recette Aléatoire</a>
     </div>
 
   </div>
@@ -43,8 +44,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="sec-title text-center mb-5">
-                        <p class="sec-sub-title mb-3">Recipes</p>
-                        <h2 class="h2-title">wake up early, <span>eat fresh & healthy</span></h2>
+                        <p class="sec-sub-title mb-3">Recettes</p>
+                        <h2 class="h2-title">wake up early, <span>Eat fresh & healthy</span></h2>
                         <div class="sec-title-shape mb-4">
                             <img src="/images/title-shape.svg" alt="">
                         </div>
@@ -59,19 +60,19 @@
                                 <div class="filter-active"></div>
                                 <li class="filter" data-filter=".all, .breakfast, .lunch, .dinner" aria-label="all">
                                     <img src="/img/bacon_eggs.png" alt="" height="30" width="60">
-                                    All
+                                    Tout
                                 </li>
                                 <li class="filter" data-filter=".breakfast" aria-label="breakfast">
                                     <img src="/img/Breakfast.png" alt="" height="30" width="60">
-                                    Breakfast
+                                    Petit-déjeuner
                                 </li>
                                 <li class="filter" data-filter=".lunch" aria-label="lunch">
                                     <img src="/img/Lunch.png" alt="" height="30" width="60">
-                                    Lunch
+                                    Déjeuner
                                 </li>
                                 <li class="filter" data-filter=".dinner" aria-label="dinner">
                                     <img src="/img/Dinner.png" alt="" height="30" width="60">
-                                    Dinner
+                                    Dîner
                                 </li>
                             </ul>
                         </div>
@@ -119,7 +120,7 @@
                       
                       <% }) %>
                     <% } else { %>
-                      <p>No items found.</p>
+                      <p>Aucun élément trouvé.</p>
                     <% } %>
 
                     <!-- BREAKFAST -->
@@ -160,7 +161,7 @@
                       
                       <% }) %>
                     <% } else { %>
-                      <p>No items found.</p>
+                      <p>Aucun élément trouvé.</p>
                     <% } %>
 
                     <!-- LUNCH -->
@@ -201,7 +202,7 @@
                       
                       <% }) %>
                     <% } else { %>
-                      <p>No items found.</p>
+                      <p>Aucun élément trouvé.</p>
                     <% } %>
 
                     <!-- DINNER -->
@@ -242,7 +243,7 @@
                       
                       <% }) %>
                     <% } else { %>
-                      <p>No items found.</p>
+                      <p>Aucun élément trouvé.</p>
                     <% } %>
                   
                   </div>
@@ -253,7 +254,7 @@
     </div>
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-      <a href="/explore-latest" class="sec-btn">Show More</a>
+      <a href="/explore-latest" class="sec-btn">En voir plus</a>
     </div>
 </section>
 <!-- New categories end-->
@@ -261,7 +262,7 @@
 <!-- Categories Start -->
 
 <div class="d-flex justify-content-center">
-  <h3>Get Inspired</h3>
+  <h3>Types</h3>
 </div>
 <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4 justify-content-center">
 
@@ -276,9 +277,9 @@
 
   <a href="/categories" class="col text-center category__link shadow-lg">
     
-      <img src="img/Full-Meal.png" alt="View All Categories" loading="lazy" height="50" width="70">
+      <img src="img/Full-Meal.png" alt="Voir toutes les Catégories" loading="lazy" height="50" width="70">
     
-    <div class="pt-4">View All</div>
+    <div class="pt-4">Voir toutes les Catégories</div>
   </a>
 
 </div>
@@ -288,8 +289,8 @@
 
 <!-- <section class="pb-4 pt-4">
   <div class="d-flex mb-2 align-items-center">
-    <h2>Latest Recipes</h2>
-    <a href="/explore-latest" class="ms-auto">View More</a>
+    <h2>Dernières Recettes</h2>
+    <a href="/explore-latest" class="ms-auto">Voir Plus</a>
   </div>
 
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
@@ -304,7 +305,7 @@
       </a>
       <% }) %>
     <% } else { %>
-      <p>No items found.</p>
+      <p>Aucun élément trouvé.</p>
     <% } %>
   </div>
 
@@ -316,12 +317,12 @@
 
 <!-- Submit - Start -->
 <section class="px-4 py-5 my-5 text-center">
-  <img src="/img/publish-recipe.png" class="d-block mx-auto mb-4 img-fluid" alt="Publish your recipe for FREE today" width="566" height="208" loading="lazy">
-  <h1 class="display-5 fw-bold">Have a Recipe to share?</h1>
+  <img src="/img/publish-recipe.png" class="d-block mx-auto mb-4" alt="Publiez votre recette GRATUITEMENT aujourd'hui" width="566" height="auto" loading="lazy">
+  <h1 class="display-5 fw-bold">Vous avez une recette à partager?</h1>
   <div class="col-lg-6 mx-auto">
-    <p class="lead mb-4">Publish your Recipe here, it will be reviewed by our team.</p>
+    <p class="lead mb-4">Publiez votre recette ici, elle sera examinée par ma équipe.</p>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-      <a href="/submit-recipe" class="sec-btn">Submit Recipe</a>
+      <a href="/submit-recipe" class="sec-btn">Soumettre Recette</a>
     </div>
   </div>
 </section>

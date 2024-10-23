@@ -1,48 +1,47 @@
 <div class="second_page">
-  <h4 class="pb-4 pt-4">Categories</h4>
+  <h4 class="pb-4 pt-4">Catégories</h4>
 
-
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-2 g-lg-3">
     <% if(typeof categories !== 'undefined' && categories.length > 0) { %>
       <% categories.forEach(function(category, index){ %>
       <a href="/categories/<%= category %>" class="col text-center category__link shadow-lg">
-          <img src="/img/<%= category %>.png" alt="<%- category %>" loading="lazy" height="50" width="80">
+          <img src="/img/<%= category %>.png" alt="<%- category %>" loading="lazy" height="50" width="80" class="">
         <div class="pt-1"><%= category %></div>
       </a>
       <% }) %>
     <% } else { %>
-      <p>No items found.</p>
+      <p>Aucun élément trouvé.</p>
     <% } %>
   </div>
 
   <h4 class="pt-4">Types</h4>
 
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mb-4">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-2 g-lg-3 mb-4">
     <% if(typeof types !== 'undefined' && types.length > 0) { %>
       <% types.forEach(function(type, index) { %>
         <a href="/types/<%= type %>" class="col text-center category__link shadow-lg">
-          <img src="/img/<%= type %>.png" alt="<%- type %>" loading="lazy" height="50" width="70">
+          <img src="/img/<%= type %>.png" alt="<%- type %>" loading="lazy" height="50" width="70" class="">
         <div class="pt-1"><%= type %></div>
       </a>
       <% }) %>
   
     <% } else { %>
-      <p>No items found.</p>
+      <p>Aucun élément trouvé.</p>
     <% } %>
   </div>
 
   <h4 class="pt-4">Tags</h4>
 
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mb-4">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-5 g-2 g-lg-3 mb-4">
     <% if(typeof tags !== 'undefined' && tags.length > 0) { %>
       <% tags.forEach(function(tag, index) { %>
         <a href="/tags/<%= tag %>" class="col text-center category__link shadow-lg">
-          <img src="/img/<%= tag %>.png" alt="<%- tag %>" loading="lazy" height="50" width="70">
-        <div class="pt-1"><%= type %></div>
+          <img src="/img/<%= tag %>.png" alt="<%- tag %>" loading="lazy" height="50" width="70" class="">
+        <div class="pt-1"><%= tag %></div>
       </a>
       <% }) %>
       <% } else { %>
-        <p>No items found.</p>
+        <p>Aucun élément trouvé.</p>
       <% } %>
   </div>
 

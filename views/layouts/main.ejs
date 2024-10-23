@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,14 +53,14 @@
                         <button class="menu-toggle"><span></span><span></span></button>
                         <nav class="header-menu">
                             <ul class="menu food-nav-menu">
-                              <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
-                              <li><a href="/categories" class="nav-link px-2 link-secondary">Categories</a></li>
-                              <li><a href="/submit-recipe" class="nav-link px-2 link-secondary">Submit</a></li>
-                              <li><a href="/health" class="nav-link px-2 link-secondary">Health Tips</a></li>
-                              <li><a href="/about" class="nav-link px-2 link-secondary">About Me</a></li>
+                              <li><a href="/" class="nav-link px-2 link-secondary">Accueil</a></li>
+                              <li><a href="/categories" class="nav-link px-2 link-secondary">Catégories</a></li>
+                              <li><a href="/submit-recipe" class="nav-link px-2 link-secondary">Poster une recette</a></li>
+                              <li><a href="/health" class="nav-link px-2 link-secondary">Blog</a></li>
+                              <li><a href="/about" class="nav-link px-2 link-secondary">À propos de moi</a></li>
                             </ul>
-                            <form action="/search" method="POST"  class="header-search-form for-mob">
-                              <input type="search" name="searchTerm" class="form-input" placeholder="Search..." aria-label="Search">
+                            <form action="<%= req.originalUrl === '/health' || req.originalUrl === '/article-search' ? '/article-search' : '/search' %>" method="POST"  class="header-search-form for-mob">
+                              <input type="search" name="searchTerm" class="form-input" placeholder="<%= req.originalUrl === '/health' || req.originalUrl === '/article-search' ? 'Rechercher un article' : 'Rechercher une recette' %>" aria-label="Rechercher">
                               <button type="submit">
                                   <i class="uil uil-search"></i>
                               </button>
@@ -68,7 +68,7 @@
                         </nav>
                         <div class="header-right">
                             <form action="<%= req.originalUrl === '/health' || req.originalUrl === '/article-search' ? '/article-search' : '/search' %>" method="POST"  class="header-search-form for-des">
-                                <input type="search" name="searchTerm" class="form-input" placeholder="<%= req.originalUrl === '/health' || req.originalUrl === '/article-search' ? 'Search an Article' : 'Search a Recipe' %>" aria-label="Search">
+                                <input type="search" name="searchTerm" class="form-input" placeholder="<%= req.originalUrl === '/health' || req.originalUrl === '/article-search' ? 'Rechercher un article' : 'Rechercher une recette' %>" aria-label="Rechercher">
                                 <button type="submit">
                                     <i class="uil uil-search"></i>
                                 </button>
@@ -86,11 +86,11 @@
 
     <main>
       <%- body -%>
-      <button id="scrollToTopBtn"  title="Go to top"><i class="bi bi-arrow-up"></i></button>
+      <button id="scrollToTopBtn"  title="Aller en haut"><i class="bi bi-arrow-up"></i></button>
     </main>
 
     <footer class="py-5">
-      <p>Build by <a href="/about">Thomas</a> with <i class="bi bi-suit-heart-fill text-danger"></i></p>
+      <p>Construit par <a href="/about">Thomas</a> avec <i class="bi bi-suit-heart-fill text-danger"></i></p>
     </footer>
 
   </div>

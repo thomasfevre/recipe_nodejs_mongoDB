@@ -1,7 +1,7 @@
 <div class="px-4 py-5 my-5 text-center">
-  <h1 class="display-5 fw-bold">Submit Your Recipe</h1>
+  <h1 class="display-5 fw-bold">Soumettre votre recette</h1>
   <div class="col-lg-6 mx-auto">
-    <p class="lead">Share your amazing recipies with thousands of web developers accross the world. Fill our form to get started.</p>
+    <p class="lead">Partagez vos recettes incroyables avec des milliers de développeurs web du monde entier. Remplissez notre formulaire pour commencer.</p>
   </div>
 </div>
 
@@ -31,80 +31,80 @@
         </div>
 
         <div class="col-12">
-          <label for="author" class="form-label">Name</label>
-          <small class="form-text text-muted">This will be your public display name.</small>
-          <input type="text" name="author" id="author" class="form-control" placeholder="ex: John" required>
+          <label for="author" class="form-label">Nom</label>
+          <small class="form-text text-muted">Ceci sera votre nom d'affichage public.</small>
+          <input type="text" name="author" id="author" class="form-control" placeholder="ex: Jean" required>
         </div>
 
         <div class="col-12">
-          <label for="name" class="form-label">Recipe Name</label>
-          <input type="text" name="name" id="name" class="form-control" placeholder="ex: Chicken Tikka Masala" required>
+          <label for="name" class="form-label">Nom de la recette</label>
+          <input type="text" name="name" id="name" class="form-control" placeholder="ex: Poulet Tikka Masala" required>
         </div>
         
         <div class="col-12">
-          <label for="smallDescription" class="form-label">Quick Description</label>
-          <small class="form-text text-muted">This is one sentence about your recipe.</small>
+          <label for="smallDescription" class="form-label">Description rapide</label>
+          <small class="form-text text-muted">Ceci est une phrase sur votre recette.</small>
           <textarea required name="smallDescription" id="smallDescription" class="form-control" cols="30" rows="1"></textarea>
         </div>
 
         <div class="col-12">
-          <label for="fullDescription" class="form-label">Full Description</label>
-          <small class="form-text text-muted">Describe your recipe and all the steps.</small>
+          <label for="fullDescription" class="form-label">Description complète</label>
+          <small class="form-text text-muted">Décrivez votre recette et toutes les étapes.</small>
           <textarea required name="fullDescription" id="fullDescription" class="form-control" cols="30" rows="4"></textarea>
         </div>
 
         <div class="col-12">
-          <label for="name" class="form-label">Ingredients</label><br>
+          <label for="name" class="form-label">Ingrédients</label><br>
          
           <div class="ingredientList">
             <div class="ingredientDiv mb-1 d-flex">
-              <input type="text" name="ingredients" class="form-control" placeholder="ex: Salt">
-              <button type="button" class="btn btn-outline-danger remove-ingredient ms-2">Remove</button>
+              <input type="text" name="ingredients" class="form-control" placeholder="ex: Sel">
+              <button type="button" class="btn btn-outline-danger remove-ingredient ms-2">Retirer</button>
             </div>
           </div>
         </div>
 
         <div class="col-12">
-          <button type="button" class="btn btn-outline-primary" id="addIngredientsBtn">+ Ingredient</button>
+          <button type="button" class="btn btn-outline-primary" id="addIngredientsBtn">+ Ingrédient</button>
         </div>
 
         <div class="col-12">
-          <label for="category">Select Category</label>
-          <select class="form-select form-control" name="category" aria-label="Category" required>
-            <option selected>Select Category</option>
+          <label for="category">Sélectionnez une catégorie</label>
+          <select class="form-select form-control" name="category" aria-label="Catégorie" required>
+            <option selected>Sélectionnez une catégorie</option>
             
-            <option value="Breakfast">Breakfast</option>
-            <option value="Lunch">lunch</option>
-            <option value="Dinner">Dinner</option>
-            <option value="All">Other</option>
+            <option value="Breakfast">Petit-déjeuner</option>
+            <option value="Lunch">Déjeuner</option>
+            <option value="Dinner">Dîner</option>
+            <option value="All">Autre</option>
           </select>
         </div>
 
         <div class="col-12">
-          <label for="type">Select Type</label>
+          <label for="type">Sélectionnez un type</label>
           <select class="form-select form-control" name="type" aria-label="Type" required>
-            <option selected>Select Type</option>
+            <option selected>Sélectionnez un type</option>
             
-            <option value="Full-meal">Full-meal</option>
-            <option value="Side-Dish">Side-Dish</option>
-            <option value="Desert">Desert</option>
-            <option value="Snack">Snack</option>
-            <option value="Other">Other</option>
+            <option value="Full-meal">Repas complet</option>
+            <option value="Side-Dish">Accompagnement</option>
+            <option value="Desert">Dessert</option>
+            <option value="Snack">En-cas</option>
+            <option value="Other">Autre</option>
           </select>
         </div>
 
         <div class="col-12">
           <label for="tags" class="form-label">Tags</label>
-          <input type="text" name="tags" id="tags" class="form-control" placeholder="ex: Quick, Easy, Fancy" >
+          <input type="text" name="tags" id="tags" class="form-control" placeholder="ex: Rapide, Facile, Chic" >
         </div>
 
         <div class="col-12">
-          <label for="image">Product Image</label>
+          <label for="image">Image du produit</label>
           <input type="file" class="form-control" name="image" accept="image/*" required>
         </div>
 
         <div class="col-12">
-          <button type="submit" class="btn btn-primary">Submit Recipe</button>
+          <button type="submit" class="btn btn-primary">Soumettre la recette</button>
         </div>
 
       </div>

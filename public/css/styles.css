@@ -5,6 +5,7 @@
 .container-xxl { 
   max-width: 1530px;
   background-color: white;
+  overflow-x: hidden;
 }
 
 body {
@@ -48,6 +49,21 @@ a { color: var(--bs-dark); }
   box-shadow: inset 6px 6px 8px #dadada, inset -6px -6px 8px #ffffff;
 }
 
+@media (max-width: 768px) {
+  .category__link {
+    width: 20%;
+    margin-right: 2%;
+  }
+}
+
+@media (max-width: 480px) {
+  .category__link {
+    width: 30%;
+    margin-right: 3%;
+    font-size: medium;
+  }
+}
+
 .category__link:hover, .recipe__link:hover {
   transform: scale(1.1);
 }
@@ -80,6 +96,9 @@ a { color: var(--bs-dark); }
   box-shadow: 0px 3px 6px rgba(0,0,0,.16);
   overflow: hidden;
   border-radius: 8px;
+} 
+.categories-class {
+  display: block;
 }
 
 @media (min-width: 1500px) {
@@ -89,6 +108,10 @@ a { color: var(--bs-dark); }
     margin-left: 0;
     margin-right: 0;
     border-radius: 11px;
+  }
+  .categories-class {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 
