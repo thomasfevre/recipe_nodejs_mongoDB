@@ -59,16 +59,16 @@
                               <li><a href="/health" class="nav-link px-2 link-secondary">Blog</a></li>
                               <li><a href="/about" class="nav-link px-2 link-secondary">À propos de moi</a></li>
                             </ul>
-                            <form action="<%= req.originalUrl === '/health' || req.originalUrl === '/article-search' ? '/article-search' : '/search' %>" method="POST"  class="header-search-form for-mob">
-                              <input type="search" name="searchTerm" class="form-input" placeholder="<%= req.originalUrl === '/health' || req.originalUrl === '/article-search' ? 'Rechercher un article' : 'Rechercher une recette' %>" aria-label="Rechercher">
+                            <form action="<%= req.originalUrl === '/health' || req.originalUrl === '/article-search' || req.originalUrl.includes('article') ? '/article-search' : '/search' %>" method="POST"  class="header-search-form for-mob">
+                              <input type="search" name="searchTerm" class="form-input" placeholder="<%= req.originalUrl === '/health' || req.originalUrl === '/article-search' || req.originalUrl.includes('article') ? 'Rechercher un article' : 'Rechercher une recette' %>" aria-label="Rechercher">
                               <button type="submit">
                                   <i class="uil uil-search"></i>
                               </button>
                           </form>
                         </nav>
                         <div class="header-right">
-                            <form action="<%= req.originalUrl === '/health' || req.originalUrl === '/article-search' ? '/article-search' : '/search' %>" method="POST"  class="header-search-form for-des">
-                                <input type="search" name="searchTerm" class="form-input" placeholder="<%= req.originalUrl === '/health' || req.originalUrl === '/article-search' ? 'Rechercher un article' : 'Rechercher une recette' %>" aria-label="Rechercher">
+                            <form action="<%= req.originalUrl === '/health' || req.originalUrl === '/article-search' || req.originalUrl.includes('article') ? '/article-search' : '/search' %>" method="POST"  class="header-search-form for-des">
+                                <input type="search" name="searchTerm" class="form-input" placeholder="<%= req.originalUrl === '/health' || req.originalUrl === '/article-search' || req.originalUrl.includes('article') ? 'Rechercher un article' : 'Rechercher une recette' %>" aria-label="Rechercher">
                                 <button type="submit">
                                     <i class="uil uil-search"></i>
                                 </button>

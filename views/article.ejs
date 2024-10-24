@@ -1,8 +1,7 @@
 <div class="container mt-5">
-  <div class="row">
-    <div class="col-12">
+  
       <div class="row">
-        <div class="col-7 article-container">
+        <div class="col-12 col-md-7 article-container">
           <h3 class="mb-4"><%= article.title %></h3>
           <div class="bottom">
             <p class="text-muted">Publié le <%= article.createdAt.toDateString() %></p>
@@ -14,13 +13,12 @@
             </div>
           </div>
         </div>
-        <div class="col-5">
-          <img src="<%= article.image %>" alt="<%= article.title %>" class="article_img mb-4 rounded">
+        <div class="col-12 col-md-5">
+          <img src="<%= article.image %>" alt="<%= article.title %>" class="article_img mb-4 rounded img-fluid">
         </div>
       </div>
       <div class="article-content mt-4">
         <%= article.content %>
       </div>
-    </div>
-  </div>
+ 
 </div>

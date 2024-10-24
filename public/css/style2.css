@@ -254,7 +254,7 @@ ul {
         font-size: 15px;
     }
     .header-search-form .form-input {
-        width: 170px;
+        width: auto;
     }
 }
 
@@ -1763,10 +1763,16 @@ a.col.text-center:hover  {
     }
     .dish-title p {
         font-size:medium;
+        margin-top:-10px;
     }
 
     .dish-info, .dist-bottom-row {
         font-size:small;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        padding-left:10px;
+        padding-right: 10px;
+        margin:0 10px;
     }
 }
 
@@ -1803,7 +1809,7 @@ a.col.text-center:hover  {
     .dish-box {
         max-width: 340px;
         margin: 80px auto 30px;
-        padding: 0 0 30px;
+        padding: 0 0 10px;
     }
     .blog-sec.section {
         padding-bottom: 0;
