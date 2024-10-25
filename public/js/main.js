@@ -1,12 +1,5 @@
 $(document).ready(function ($) {
     "use strict";
-
-
-    jQuery(".filters").on("click", function () {
-        
-        jQuery("#menu-dish").removeClass("bydefault_show");
-    });
-
     
 
     // Filter functionality
@@ -18,12 +11,7 @@ $(document).ready(function ($) {
         // Add 'active-filter' class to the clicked filter
         jQuery(this).addClass("active-filter");
 
-        // Get the class of the clicked filter
-        var filterName = jQuery(this).attr("data-filter");
-        console.log(filterName);
-        // Show/Hide meal items based on the selected filter
-        // jQuery("#menu-dish .dish-box-wp").hide();
-        // jQuery("#menu-dish ." + filterName).show();
+        
         $("#menu-dish").mixItUp({
             selectors: {
                 target: ".dish-box-wp",
@@ -34,7 +22,7 @@ $(document).ready(function ($) {
                 easing: "ease-in-out",
             },
             load: {
-                filter: ".all, .breakfast, .lunch, .dinner",
+                filter: ".all",
             },
         });
     });
@@ -93,6 +81,21 @@ $(document).ready(function ($) {
 
 jQuery(window).on('load', function () {
 
+    // default recipes .all
+    $("#menu-dish").mixItUp({
+        selectors: {
+            target: ".dish-box-wp",
+            filter: ".filter",
+        },
+        animation: {
+            effects: "fade",
+            easing: "ease-in-out",
+        },
+        load: {
+            filter: ".all",
+        },
+    });
+
     //activating tab of filter
     let targets = document.querySelectorAll(".filter");
     let activeTab = 0;
@@ -119,7 +122,7 @@ jQuery(window).on('load', function () {
             }
             animation = gsap.timeline({
                 defaults: {
-                    duration: 0.4
+                    duration: dur
                 }
             });
             old = activeTab;
