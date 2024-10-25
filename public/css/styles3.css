@@ -160,7 +160,7 @@ h1 small {
 .logos .marquee {
 	width: 100vw;
 	max-width: 100%;
-	height: 128px;
+	height: 100px;
 	overflow: hidden;
 	position: relative;
 }
@@ -171,7 +171,7 @@ h1 small {
 	will-change: transform;
 	animation: marquee 20s linear infinite;
 	display: flex;
-	gap: 10px;
+	gap: 20px;
 	width: 100%;
 }
 

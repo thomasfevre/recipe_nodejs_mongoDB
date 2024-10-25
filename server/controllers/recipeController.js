@@ -54,7 +54,7 @@ exports.exploreRecipesByCategory = async(req, res) => {
     let categoryName = req.params.name;
     const limitNumber = 20;
     const recipes = await Recipe.find({ 'category': categoryName }).limit(limitNumber);
-    console.log(recipes);
+   
     res.render('recipe_list', { req, title: 'Recipes - ' + categoryName, recipes } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
@@ -70,7 +70,7 @@ exports.exploreRecipesByType = async(req, res) => {
     let typeName = req.params.name;
     const limitNumber = 20;
     const recipes = await Recipe.find({ 'type': typeName }).limit(limitNumber);
-    console.log(recipes);
+   
     res.render('recipe_list', { req, title: 'Recipes - ' + typeName, recipes } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
@@ -86,7 +86,7 @@ exports.exploreRecipesByTags = async(req, res) => {
     let tagsName = req.params.name;
     const limitNumber = 20;
     const recipes = await Recipe.find({ 'type': tagsName }).limit(limitNumber);
-    console.log(recipes);
+   
     res.render('recipe_list', { req, title: 'Recipes - ' + tagsName, recipes } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
@@ -101,8 +101,11 @@ exports.exploreRecipesByTypeOrTags = async(req, res) => {
   try {
     let param = req.params.name;
     const limitNumber = 20;
-    const recipes = await Recipe.find({ 'type': param, 'tags': param }).limit(limitNumber);
-    console.log(recipes);
+    const recipes = await Recipe.find({ $or: [
+      { type: { $regex: param, $options: 'i' } },
+      { tags: { $regex: param, $options: 'i' } }
+    ] }).limit(limitNumber);
+   
     res.render('recipe_list', { req, title: 'Recipes - ' + param, recipes } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
