@@ -386,16 +386,19 @@ h3 {
 
 .article-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(28%, 1fr));
   gap: 30px;
 }
 
 .article-card {
-  background: linear-gradient(145deg, #ececec, #ffffff);
-  border-radius: 20px;
-  overflow: hidden;
-  transition: 0.3s;
-  box-shadow: 10px 10px 20px #d1d1d1, -10px -10px 20px #ffffff;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between; /* Ensures spacing between content */
+	background: linear-gradient(145deg, #ececec, #ffffff);
+	border-radius: 20px;
+	overflow: hidden;
+	transition: 0.3s;
+	box-shadow: 10px 10px 20px #d1d1d1, -10px -10px 20px #ffffff;
 }
 
 .article-card:hover {
@@ -403,14 +406,20 @@ h3 {
   box-shadow: 15px 15px 30px #d1d1d1, -15px -15px 30px #ffffff;
 }
 
-.article-image {
-  height: 200px;
-  background-size: cover;
-  background-position: center;
-}
+.article-card img {
+	width: 100%;               /* Full width of the card */
+	height: 200px;             /* Set a fixed height */
+	object-fit: cover;         /* Crops the image to fit within the dimensions */
+	border-top-left-radius: 20px;  /* Match the card's rounded corners */
+	border-top-right-radius: 20px;
+	display: block;
+  }
+  
+
 
 .article-content {
   padding: 20px;
+  margin-top: auto;
 }
 
 .article-title {

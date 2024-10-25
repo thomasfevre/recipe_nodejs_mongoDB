@@ -8,7 +8,8 @@
         <% if(articles != '') { %>
           <% articles.forEach(function(article, index){ %>
             <div class="article-card">
-              <div class="article-image" style="background-image: url('<%= article.image %>');"></div>
+              <!-- <div class="article-image" style="background-image: url('<%= article.image %>');"></div> -->
+              <img src="<%= article.image %>" alt="Article Image" class="" loading="lazy" />
               <div class="article-content">
                 <h3 class="article-title"><%= article.title %></h3>
                 <p class="article-summary"><%= article.summary %></p>

@@ -361,7 +361,15 @@ exports.getArticlesByTag = async (req, res) => {
 */
 exports.searchArticle = async (req, res) => {
   try {
-    const articles = await Article.find({ tags: req.body.searchTerm}).sort({ createdAt: 'desc' }).limit(10);
+    const searchTerm = req.body.searchTerm;
+    const articles = await Article.find({
+      $or: [
+        { title: { $regex: searchTerm, $options: 'i' } },
+        { summary: { $regex: searchTerm, $options: 'i' } },
+        { content: { $regex: searchTerm, $options: 'i' } },
+        { tags: { $regex: searchTerm, $options: 'i' } }
+      ]
+    }).sort({ createdAt: 'desc' }).limit(10);
     const tags = await Article.distinct('tags');
     res.render('health', { req, title: 'Health & Wellness Blog', articles, tags });
   } catch (error) {
