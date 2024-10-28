@@ -36,10 +36,10 @@ const recipeSchema = new mongoose.Schema({
     required: 'This field is required.'
   },
   tags: {
-    type: Array,
+    type: [String],
   },
-  image: {
-    type: String,
+  images: {
+    type: [String],
     required: 'This field is required.'
   },
 });

@@ -90,7 +90,7 @@
                           <div class="dish-box text-center">
                               <a href="/recipe/<%= recipe._id %>" class="col text-center">
                                 <div class="category__img category__img--large">
-                                  <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+                                  <img src="/uploads/<%= recipe.image[0] %>" alt="<%= recipe.name %>" loading="lazy">
                                 </div>
                               
                                 <div class="dish-title">
@@ -131,7 +131,7 @@
                           <div class="dish-box text-center">
                               <a href="/recipe/<%= recipe._id %>" class="col text-center">
                                 <div class="category__img category__img--large">
-                                  <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+                                  <img src="/uploads/<%= recipe.image[0] %>" alt="<%= recipe.name %>" loading="lazy">
                                 </div>
                               </a>
                                 <div class="dish-title">
@@ -172,7 +172,7 @@
                           <div class="dish-box text-center">
                               <a href="/recipe/<%= recipe._id %>" class="col text-center">
                                 <div class="category__img category__img--large">
-                                  <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+                                  <img src="/uploads/<%= recipe.image[0] %>" alt="<%= recipe.name %>" loading="lazy">
                                 </div>
                               
                                 <div class="dish-title">
@@ -213,7 +213,7 @@
                           <div class="dish-box text-center">
                               <a href="/recipe/<%= recipe._id %>" class="col text-center">
                                 <div class="category__img category__img--large">
-                                  <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+                                  <img src="/uploads/<%= recipe.image[0] %>" alt="<%= recipe.name %>" loading="lazy">
                                 </div>
                               
                                 <div class="dish-title">
@@ -299,7 +299,7 @@
       <% food.latest.forEach(function(recipe, index){ %>
       <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
         <div class="category__img category__img--large shadow">
-          <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+          <img src="/uploads/<%= recipe.image[0] %>" alt="<%= recipe.name %>" loading="lazy">
         </div>
         <div class="pt-1"><%= recipe.name %></div>
       </a>

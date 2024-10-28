@@ -204,41 +204,31 @@ exports.getAboutPage = async(req, res) => {
 exports.submitRecipeOnPost = async(req, res) => {
   try {
 
-    let imageUploadFile;
-    let uploadPath;
-    let newImageName;
+    let imagesUploadFiles = req.files.images;
+    let uploadPaths = [];
+    let newImageNames = [];
 
     if(!req.files || Object.keys(req.files).length === 0){
       console.log('No Files where uploaded.');
     } else {
 
-      imageUploadFile = req.files.image;
-      newImageName = req.body.email + "_" + imageUploadFile.name+ "_" + new Date().toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }).replace(/[\/,:]/g, '_') ;
+      imagesUploadFiles.forEach((imageUploadFile) => {
+        newImageName = req.body.email + "_" + new Date().toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }).replace(/[\/,:]/g, '_') + imageUploadFile.name ;
 
-      uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
+        uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
 
-      imageUploadFile.mv(uploadPath, function(err){
-        if(err) return res.status(500).send(err);
-      })
+        imageUploadFile.mv(uploadPath, function(err){
+          if(err) return res.status(500).send(err);
+        })
+
+        uploadPaths.push(uploadPath);
+        newImageNames.push(newImageName);
+      });
 
     }
 
-    // const newRecipe = new Recipe({
-    //   name: req.body.name,
-    //   description: req.body.description,
-    //   email: req.body.email,
-    //   ingredients: req.body.ingredients,
-    //   category: req.body.category,
-    //   image: newImageName
-    // });
-    
-    // await newRecipe.save();
-
-    // req.flash('infoSubmit', 'Recipe has been added.')
-    // res.redirect('/submit-recipe');
 
     // send email to admin
-   
 
     // Create a transporter using SMTP
     let transporter = nodemailer.createTransport({
@@ -268,7 +258,7 @@ exports.submitRecipeOnPost = async(req, res) => {
         Category: ${req.body.category}
         Type: ${req.body.type}
         Tags: ${req.body.tags}
-        Image: ${newImageName}
+        Images: ${newImageNames.join(', ')}
       `
     };
 
@@ -288,12 +278,12 @@ exports.submitRecipeOnPost = async(req, res) => {
     //   email: req.body.email,
     //   ingredients: req.body.ingredients,
     //   category: req.body.category,
-    //   image: newImageName
+    //   images: newImageNames
     // });
     
     // await newRecipe.save();
 
-    req.flash('infoSubmit', 'Recipe has been submitted and an email has been sent to the admin.')
+    req.flash('infoSubmit', 'La recette a été soumise et un email a été envoyé à l\'administrateur.')
     res.redirect('/submit-recipe');
   } catch (error) {
     // res.json(error);

@@ -5,7 +5,23 @@
     <div class="row pt-4">
 
       <div class="col-12 col-md-4 col-lg-3">
-        <img src="/uploads/<%- recipe.image %>" class="recipe-img" alt="<%- recipe.name %>" loading="lazy">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <% recipe.image.forEach(function(image, index){ %>
+              <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                <img src="/uploads/<%- image %>" class="d-block w-100 recipe-img" alt="<%- recipe.name %>" loading="lazy">
+              </div>
+            <% }) %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       </div>
 
       <div class="col-12 col-md-8 col-lg-9">

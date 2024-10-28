@@ -7,7 +7,7 @@
       <% recipes.forEach(function(recipe, index){ %>
         <a href="/recipe/<%= recipe._id %>" class="col text-center recipe__link shadow">
           <div class="recipe__img">
-            <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+            <img src="/uploads/<%= recipe.image[0] %>" alt="<%= recipe.name %>" loading="lazy">
           </div>
         
           <div class="dish-title">
