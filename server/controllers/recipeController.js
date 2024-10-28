@@ -241,24 +241,24 @@ exports.submitRecipeOnPost = async(req, res) => {
       }
     });
 
-    // Prepare email content
+    // Prepare email content in MongoDB format
     let mailOptions = {
       from: req.body.email,
       to: 'balance2eat@gmail.com',
       subject: 'New Recipe Submission',
       text: `
-        New recipe submitted:
-        
-        Name: ${req.body.name}
-        Author: ${req.body.author}
-        Small Description: ${req.body.smallDescription}
-        Full Description: ${req.body.fullDescription}
-        Email: ${req.body.email}
-        Ingredients: ${req.body.ingredients}
-        Category: ${req.body.category}
-        Type: ${req.body.type}
-        Tags: ${req.body.tags}
-        Images: ${newImageNames.join(', ')}
+        {
+          "name": "${req.body.name}",
+          "author": "${req.body.author}",
+          "smallDescription": "${req.body.smallDescription}",
+          "fullDescription": "${req.body.fullDescription}",
+          "email": "${req.body.email}",
+          "ingredients": [${req.body.ingredients.map(ingredient => `"${ingredient}"`).join(', ')}],
+          "category": "${req.body.category}",
+          "type": "${req.body.type}",
+          "tags": [${req.body.tags.map(tag => `"${tag}"`).join(', ')}],
+          "image": [${newImageNames.map(imageName => `"${imageName}"`).join(', ')}]
+        }
       `
     };
 

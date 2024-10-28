@@ -823,7 +823,8 @@ a.col.text-center:hover  {
 
 .dish-title .h3-title {
     text-transform: capitalize;
-    padding-bottom: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
     color: #0d0d25;
@@ -834,13 +835,14 @@ a.col.text-center:hover  {
     -webkit-box-orient: vertical;
     overflow: hidden;
     font-weight: 900;
-    height:50px;
+    height:auto;
     font-size: larger;
 }
 
 
 .dish-title p {
     color: #bfbfbf;
+    margin-bottom: 0;
 }
 
 .dish-info ul, .dist-bottom-row ul {
@@ -1695,8 +1697,9 @@ a.col.text-center:hover  {
     }
     .dish-title .h3-title {
         display: block;
-        min-height: auto;
-        margin-bottom: 12px;
+        min-height: fit-content;
+        margin-bottom: 0;
+        padding-bottom: 0;
     }
     .menu-img {
         width: 180px;
@@ -1762,15 +1765,16 @@ a.col.text-center:hover  {
     .dish-title .h3-title {
         font-size:medium;
         line-height: normal;
+        padding-bottom: 0;
+        height: fit-content;
     }
     .dish-title p {
         font-size:medium;
-        margin-top:-10px;
     }
 
     .dish-info, .dist-bottom-row {
         font-size:small;
-        padding-top: 1px;
+        padding-top: 5px;
         padding-bottom: 1px;
         padding-left:10px;
         padding-right: 10px;
@@ -1841,6 +1845,7 @@ a.col.text-center:hover  {
     }
     .menu-box-right .dish-title .h3-title {
         padding: 0;
+        height: fit-content;
     }
     .gallery-img {
         height: 50vw;
