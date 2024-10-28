@@ -103,10 +103,14 @@
                                           <p>Type</p>
                                           <b><%= recipe.type %></b>
                                       </li>
+                                      
                                       <li>
                                           <p>Tags</p>
-                                          <b><%= recipe.tags %></b>
+                                          <% recipe.tags.forEach(function(tag, index) { %>
+                                            <b><%= tag %></b>
+                                          <% }) %>
                                       </li>
+                                       
                                     </ul>
                                 </div>
                                 <div class="dist-bottom-row">
@@ -145,9 +149,11 @@
                                           <b><%= recipe.type %></b>
                                       </li>
                                       <li>
-                                          <p>Tags</p>
-                                          <b><%= recipe.tags %></b>
-                                      </li>
+                                        <p>Tags</p>
+                                        <% recipe.tags.forEach(function(tag, index) { %>
+                                          <b><%= tag %></b>
+                                        <% }) %>
+                                    </li>
                                     </ul>
                                 </div>
                                 <div class="dist-bottom-row">
@@ -186,9 +192,11 @@
                                           <b><%= recipe.type %></b>
                                       </li>
                                       <li>
-                                          <p>Tags</p>
-                                          <b><%= recipe.tags %></b>
-                                      </li>
+                                        <p>Tags</p>
+                                        <% recipe.tags.forEach(function(tag, index) { %>
+                                          <b><%= tag %></b>
+                                        <% }) %>
+                                    </li>
                                     </ul>
                                 </div>
                                 <div class="dist-bottom-row">
@@ -227,9 +235,11 @@
                                             <b><%= recipe.type %></b>
                                         </li>
                                         <li>
-                                            <p>Tags</p>
-                                            <b><%= recipe.tags %></b>
-                                        </li>
+                                          <p>Tags</p>
+                                          <% recipe.tags.forEach(function(tag, index) { %>
+                                            <b><%= tag %></b>
+                                          <% }) %>
+                                      </li>
                                     </ul>
                                 </div>
                                 <div class="dist-bottom-row">
