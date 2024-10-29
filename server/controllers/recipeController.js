@@ -211,24 +211,37 @@ exports.submitRecipeOnPost = async(req, res) => {
     if(!req.files || Object.keys(req.files).length === 0){
       console.log('No Files where uploaded.');
     } else {
+      if(Array.isArray(imagesUploadFiles)) {
+        imagesUploadFiles.forEach((imageUploadFile) => {
+          newImageName = req.body.email + "_" + new Date().toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) + imageUploadFile.name ;
+          newImageName = newImageName.replace(/[\/,:]/g, '_');
+          uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
+          imageUploadFile.mv(uploadPath, function(err){
+            if(err) return res.status(500).send(err);
+          })
 
-      imagesUploadFiles.forEach((imageUploadFile) => {
-        newImageName = req.body.email + "_" + new Date().toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }).replace(/[\/,:]/g, '_') + imageUploadFile.name ;
-
+          uploadPaths.push(uploadPath);
+          newImageNames.push(newImageName);
+        });
+      } else {
+        newImageName = req.body.email + "_" + new Date().toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) + imagesUploadFiles.name ;
+        newImageName = newImageName.replace(/[\/,:]/g, '_');
         uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
-
-        imageUploadFile.mv(uploadPath, function(err){
+    
+        imagesUploadFiles.mv(uploadPath, function(err){
           if(err) return res.status(500).send(err);
         })
 
         uploadPaths.push(uploadPath);
         newImageNames.push(newImageName);
-      });
+      }
 
     }
 
+    // Convert req.body.tags to an array of strings
+    let tagsArray = req.body.tags.split(',').map(tag => tag.trim());
 
-    // send email to admin
+    /////////////////// send email to admin
 
     // Create a transporter using SMTP
     let transporter = nodemailer.createTransport({
@@ -246,20 +259,19 @@ exports.submitRecipeOnPost = async(req, res) => {
       from: req.body.email,
       to: 'balance2eat@gmail.com',
       subject: 'New Recipe Submission',
-      text: `
-        {
-          "name": "${req.body.name}",
-          "author": "${req.body.author}",
-          "smallDescription": "${req.body.smallDescription}",
-          "fullDescription": "${req.body.fullDescription}",
-          "email": "${req.body.email}",
-          "ingredients": [${req.body.ingredients.map(ingredient => `"${ingredient}"`).join(', ')}],
-          "category": "${req.body.category}",
-          "type": "${req.body.type}",
-          "tags": [${req.body.tags.map(tag => `"${tag}"`).join(', ')}],
-          "image": [${newImageNames.map(imageName => `"${imageName}"`).join(', ')}]
-        }
-      `
+      
+      text: JSON.stringify({
+        name: req.body.name,
+        author: req.body.author,
+        smallDescription: req.body.smallDescription,
+        fullDescription: req.body.fullDescription,
+        email: req.body.email,
+        ingredients: req.body.ingredients,
+        category: req.body.category,
+        type: req.body.type,
+        tags: tagsArray,
+        image: newImageNames
+      })
     };
 
     // Send email
