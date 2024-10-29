@@ -39,11 +39,23 @@
           <div class="row pt-4">
             <div class="col-12">
               <h4>Ingrédients</h4>
-              <ul class="list-group list-group-flush">
+              <div class="row">
                 <% recipe.ingredients.forEach(function(ingredients, index){ %>
-                  <li class="list-group-item"><%= ingredients %></li>
+                  <% if(index % 2 === 0) { %>
+                    <div class="col-6">
+                      <ul class="list-group">
+                        <li class="list-group-item"><%= ingredients %></li>
+                      </ul>
+                    </div>
+                  <% } else { %>
+                    <div class="col-6">
+                      <ul class="list-group">
+                        <li class="list-group-item"><%= ingredients %></li>
+                      </ul>
+                    </div>
+                  <% } %>
                 <% }) %>
-              </ul> 
+              </div> 
             </div>
           </div>
 

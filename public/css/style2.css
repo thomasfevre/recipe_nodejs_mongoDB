@@ -175,7 +175,7 @@ ul {
 .header-search-form .form-input {
     font-size: 13px;
     padding-right: 40px;
-    width: 200px;
+    width: auto;
     height: 40px;
 }
 
