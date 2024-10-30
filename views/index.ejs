@@ -106,9 +106,11 @@
                                       
                                       <li>
                                           <p>Tags</p>
-                                          <% recipe.tags.forEach(function(tag, index) { %>
-                                            <b><%= tag %></b>
-                                          <% }) %>
+                                          <div class="tags-container">
+                                            <% recipe.tags.forEach(function(tag, index) { %>
+                                              <b><%= tag %></b>
+                                            <% }) %>
+                                          </div>
                                       </li>
                                        
                                     </ul>
@@ -236,9 +238,11 @@
                                         </li>
                                         <li>
                                           <p>Tags</p>
-                                          <% recipe.tags.forEach(function(tag, index) { %>
-                                            <b><%= tag %></b>
-                                          <% }) %>
+                                          <div class="tags-container">
+                                            <% recipe.tags.forEach(function(tag, index) { %>
+                                              <b><%= tag %></b>
+                                            <% }) %>
+                                          </div>
                                       </li>
                                     </ul>
                                 </div>

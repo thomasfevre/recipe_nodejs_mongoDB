@@ -787,7 +787,9 @@ p {
     background: linear-gradient(145deg, #ececec, #e3dfdf);
     box-shadow: 28px 28px 45px #d4d4d4, -28px -28px 45px #ffffff;
     display: flow-root;
-    padding: 0 30px 40px;
+    padding-right:30px;
+    padding-left:30px;
+    padding-bottom: 20px;
     padding-top: 0;
     margin: 30px 0 30px;
     transition: 0.8s cubic-bezier(0.22, 0.78, 0.45, 1.02);
@@ -824,7 +826,7 @@ a.col.text-center:hover  {
 .dish-title .h3-title {
     text-transform: capitalize;
     padding-top: 5px;
-    padding-bottom: 5px;
+    margin-bottom: 0;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
     color: #0d0d25;
@@ -835,8 +837,11 @@ a.col.text-center:hover  {
     -webkit-box-orient: vertical;
     overflow: hidden;
     font-weight: 900;
-    height:auto;
+    height:50px;
     font-size: larger;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -882,8 +887,24 @@ a.col.text-center:hover  {
 
 .dish-info {
     border-bottom: 2px solid rgb(204 204 204 / 30%);
-    margin: 30px 0 30px;
-    padding-bottom: 30px;
+    margin: 30px 0 10px;
+    padding-bottom: 3px;
+}
+
+.tags-container {
+    display: inline-grid;
+    height: 60px;
+    overflow-y: auto;
+}
+
+/* Individual tag styles */
+.tags-container b {
+    padding-bottom: 2px; /* Padding for tags */
+}
+
+/* Optional: Hide scrollbar for WebKit browsers */
+.tags-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
 }
 
 
@@ -894,6 +915,12 @@ a.col.text-center:hover  {
 
 .dist-bottom-row ul li b {
     font-size: 30px;
+}
+
+.dist-bottom-row {
+    height:60px;
+    display:inline-flex;
+    align-items: center;
 }
 
 .dish-add-btn {
