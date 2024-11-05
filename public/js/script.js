@@ -10,6 +10,9 @@ addIngredientsBtn.addEventListener('click', function(){
   
   // Add event listener to the new remove button
   newIngredients.querySelector('.remove-ingredient').addEventListener('click', removeIngredient);
+  
+  // Add drag-and-drop functionality to the new ingredient
+  addDragAndDrop(newIngredients);
 });
 
 // Function to remove ingredient
@@ -26,3 +29,47 @@ function removeIngredient(event) {
 document.querySelectorAll('.remove-ingredient').forEach(button => {
   button.addEventListener('click', removeIngredient);
 });
+
+// Add drag-and-drop functionality
+function addDragAndDrop(ingredientDiv) {
+  ingredientDiv.setAttribute('draggable', true);
+
+  ingredientDiv.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', null); // For Firefox compatibility
+    setTimeout(() => {
+      ingredientDiv.classList.add('dragging');
+    }, 0);
+  });
+
+  ingredientDiv.addEventListener('dragend', () => {
+    ingredientDiv.classList.remove('dragging');
+  });
+
+  ingredientDiv.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    const draggingElement = document.querySelector('.dragging');
+    const afterElement = getDragAfterElement(ingredientList, e.clientY);
+    if (afterElement == null) {
+      ingredientList.appendChild(draggingElement);
+    } else {
+      ingredientList.insertBefore(draggingElement, afterElement);
+    }
+  });
+}
+
+// Function to get the element after which the dragged element should be placed
+function getDragAfterElement(container, y) {
+  const draggableElements = [...container.querySelectorAll('.ingredientDiv:not(.dragging)')];
+  return draggableElements.reduce((closest, child) => {
+    const box = child.getBoundingClientRect();
+    const offset = y - box.top - box.height / 2;
+    if (offset < 0 && offset > closest.offset) {
+      return { offset: offset, element: child };
+    } else {
+      return closest;
+    }
+  }, { offset: Number.NEGATIVE_INFINITY }).element;
+}
+
+// Initialize drag-and-drop for existing ingredients
+document.querySelectorAll('.ingredientDiv').forEach(addDragAndDrop);
