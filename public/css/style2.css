@@ -859,6 +859,8 @@ a.col.text-center:hover  {
 .dish-info ul li {
     display: inline-block;
     flex: 1;
+    margin-left:5%;
+    margin-right:5%;
 }
 
 .dish-info ul li:last-child {
@@ -879,16 +881,29 @@ a.col.text-center:hover  {
 
 .dish-info ul li b {
     font-weight: 600;
+    font-family:'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif';
+    font-size: large;
 }
 
 .dish-info, .dist-bottom-row {
     padding: 0 30px;
+    font-size: large;
+}
+.dish-info, .dist-bottom-row.long {
+    padding: 0;
+    font-size: medium;
 }
 
 .dish-info {
     border-bottom: 2px solid rgb(204 204 204 / 30%);
     margin: 30px 0 10px;
     padding-bottom: 3px;
+}
+
+.indexSmallDescription {
+    max-height:60px;
+    font-size: large;
+    overflow-y:auto;
 }
 
 .tags-container {
