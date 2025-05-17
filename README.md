@@ -1,10 +1,7 @@
 # Recipe Blog - Using Node.js and MongoDB
 
-Preview 1 : 
-https://balanced-food-blog.up.railway.app/
-
-Preview 2 (if preview 1 is not working): 
-https://balanced-food-blog.onrender.com
+Preview : 
+https://recipe-nodejs-mongodb.onrender.com
 
 Please be aware that it may take a few minutes to load the website the first time, if no one has visited the website in the last 30 minutes (Due to the FREE tier used on render.com)
 
