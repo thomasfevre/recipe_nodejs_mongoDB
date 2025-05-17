@@ -1,0 +1,50 @@
+<div class="container-fluid health-container">
+
+  <div class="row">
+    <!-- Articles List (3/4 width) -->
+    <div class="col-md-9 pt-5">
+      <h2 class="section-title"><small>Derniers</small> Articles</h2>
+      <div id="articlesList" class="article-grid">
+        <% if(articles != '') { %>
+          <% articles.forEach(function(article, index){ %>
+            <div class="article-card">
+              <!-- <div class="article-image" style="background-image: url('<%= article.image %>');"></div> -->
+              <img src="<%= article.image %>" alt="Article Image" class="" loading="lazy" />
+              <div class="article-content">
+                <h3 class="article-title"><%= article.title %></h3>
+                <p class="article-summary"><%= article.summary %></p>
+                <p class="article-date"><small class="text-muted">Publié le <%= article.createdAt.toDateString() %></small></p>
+                <a href="/article/<%= article._id %>" class="btn btn-primary read-more">Lire la suite</a>
+              </div>
+            </div>
+          <% }) %>
+        <% } else { %>
+          <p class="no-articles">Aucun article trouvé.</p>
+        <% } %>
+      </div>
+    </div>
+
+    <!-- Sidebar (1/4 width) -->
+    <div class="col-md-3 sidebar">
+      <!-- Small explanation of the page -->
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Qu'y a-t-il ici?</h3>
+        <p class="sidebar-text">Bienvenue sur mon blog Santé & Bien-être! Vous y trouverez les derniers articles sur la nutrition, la forme physique, la santé mentale et le bien-être général. Restez informé et inspiré dans votre parcours vers un mode de vie plus sain.</p>
+      </div>
+
+      <!-- Tags List -->
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Tags</h3>
+        <div id="tagsList" class="tags-list">
+          <% if(tags != '') { %>
+            <% tags.forEach(function(tag){ %>
+              <a href="/health/<%= tag %>" class="tag-badge"><%= tag %></a>
+            <% }) %>
+          <% } else { %>
+            <p class="no-tags">Aucun tag trouvé.</p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

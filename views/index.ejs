@@ -1,17 +1,32 @@
-<div class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4">
-  <div class="col-12 col-lg-6">
-    <img src="/img/hero-image.png" width="607" height="510" class="d-block mx-lg-auto img-fluid" loading="lazy" alt="Cooking With Node.js">
+<div class="js-parallax-scene">
+  <div class="banner-shape-1 w-100" data-depth="0.30">
+      <img src="/images/berry.png" alt="">
   </div>
+  <div class="banner-shape-2 w-100" data-depth="0.25">
+      <img src="/images/leaf.png" alt="">
+  </div>
+</div>
+
+<div class="row flex-lg-row-reverse align-items-center g-5 py-5 mb-4 position-relative">
+  <div class="col-lg-4">
+    <div class="banner-img-wp">
+        <div class="banner-img">
+          <img src="/images/main-b.jpg" alt="" class="banner-img">
+        </div>
+    </div>
+</div>
 
   <div class="col-12 col-lg-6">
-    <h1 class="display-5 fw-bold mb-3">Huge selection of delicios recipe ideas</h1>
+    <h1 class="display-5 fw-bold mb-3">Bienvenue sur mon Blog Balanced Diet</h1>
+    <small class="text-muted">Balanced Diet = Alimentation équilibrée</small>
     <p class="lead">
-      Explore our huge selection of delicious recipe ideas including; easy desserts, delicious vegan and vegetarian dinner ideas, gorgeous pasta recipes, quick bakes, family-friendly meals and gluten-free recipes.
+      Explorez ma sélection diversifiée de recettes saines qui mettent l'accent sur des ingrédients équilibrés, vous permettant de savourer des repas délicieux sans calories excessives. Nos plats mettent l'accent sur des choix d'ingrédients intelligents, ce qui rend facile la création de repas satisfaisants qui nourrissent votre corps tout en régalant vos papilles. Que vous recherchiez des options légères mais savoureuses ou des moyens innovants de savourer vos plats préférés, j'ai ce qu'il vous faut!
     </p>
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-      <a href="/explore-latest" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">Explore Latest</a>
-      <a href="/explore-random" class="btn btn-outline-secondary btn-lg px-4 me-md-2">Show Random</a>
+      <a href="/explore-latest" class="sec-btn">Dernières Recettes</a>
+      <span style="margin: 0 10px;">&nbsp;</span>
+      <a href="/explore-random" class="sec-btn">Recette Aléatoire</a>
     </div>
 
   </div>
@@ -19,41 +34,278 @@
 </div>
 
 
+
+
+<!-- New categories start -->
+<section style="background-image: url(/images/menu-bg.png);"
+    class="our-menu section bg-light repeat-img" id="menu">
+    <div class="sec-wp">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="sec-title text-center mb-5">
+                        <p class="sec-sub-title mb-3">Recettes</p>
+                        <h2 class="h2-title">wake up early, <span>Eat fresh & healthy</span></h2>
+                        <div class="sec-title-shape mb-4">
+                            <img src="/images/title-shape.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-tab-wp">
+                <div class="row">
+                    <div class="col-lg-12 m-auto">
+                        <div class="menu-tab text-center">
+                            <ul class="filters">
+                                <div class="filter-active"></div>
+                                <li class="filter" data-filter=".all" aria-label="all">
+                                    <img src="/img/bacon_eggs.png" alt="" height="30" width="60">
+                                    Tout
+                                </li>
+                                <li class="filter" data-filter=".breakfast" aria-label="breakfast">
+                                    <img src="/img/Breakfast.png" alt="" height="30" width="60">
+                                    Petit-déjeuner
+                                </li>
+                                <li class="filter" data-filter=".lunch" aria-label="lunch">
+                                    <img src="/img/Lunch.png" alt="" height="30" width="60">
+                                    Déjeuner
+                                </li>
+                                <li class="filter" data-filter=".dinner" aria-label="dinner">
+                                    <img src="/img/Dinner.png" alt="" height="30" width="60">
+                                    Dîner
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-list-row">
+                <div class="row g-xxl-5" id="menu-dish">
+
+                  <div class="row row-cols-1 row-cols-lg-5 g-2 g-lg-5">
+                    <% if(typeof food.latest !== 'undefined' && food.latest.length > 0) { %>
+                      <% food.latest.forEach(function(recipe, index){ %>
+                      
+                        <div class="col-lg-4 col-sm-6 dish-box-wp all" data-cat="all">
+                          <div class="dish-box text-center">
+                              <a href="/recipe/<%= recipe._id %>" class="col text-center">
+                                <div class="category__img category__img--large">
+                                  <img src="/uploads/<%= recipe.image[0] %>" alt="<%= recipe.name %>" loading="lazy">
+                                </div>
+                              
+                                <div class="dish-title">
+                                    <h3 class="h3-title"><%= recipe.name %></h3>
+                                    <p><%= recipe.author %></p>
+                                </div>
+                                <div class="dish-info">
+                                    <ul>
+                                      <li>
+                                          <p>Type</p>
+                                          <b><%= recipe.type %></b>
+                                      </li>
+                                      
+                                      <li>
+                                          <p>Tags</p>
+                                          <div class="tags-container">
+                                            <% recipe.tags.forEach(function(tag, index) { %>
+                                              <b><%= tag %></b>
+                                            <% }) %>
+                                          </div>
+                                      </li>
+                                       
+                                    </ul>
+                                </div>
+                                <div class="dist-bottom-row <%= recipe.smallDescription.length > 50 ? 'long' : '' %>">
+                                  <p class="indexSmallDescription"><%= recipe.smallDescription %></p>
+                                  
+                                </div>
+                              </a>
+                          </div>
+                      </div>
+                     
+
+                      
+                      <% }) %>
+                    <% } else { %>
+                      <p>Aucun élément trouvé.</p>
+                    <% } %>
+
+                    <!-- BREAKFAST -->
+                    <% if(typeof food.breakfastMeals !== 'undefined' && food.breakfastMeals.length > 0) { %>
+                      <% food.breakfastMeals.forEach(function(recipe, index){ %>
+                      
+                        <div class="col-lg-4 col-sm-6 dish-box-wp breakfast" data-cat="breakfast">
+                          <div class="dish-box text-center">
+                              <a href="/recipe/<%= recipe._id %>" class="col text-center">
+                                <div class="category__img category__img--large">
+                                  <img src="/uploads/<%= recipe.image[0] %>" alt="<%= recipe.name %>" loading="lazy">
+                                </div>
+                              </a>
+                                <div class="dish-title">
+                                    <h3 class="h3-title"><%= recipe.name %></h3>
+                                    <p><%= recipe.author %></p>
+                                </div>
+                                <div class="dish-info">
+                                    <ul>
+                                      <li>
+                                          <p>Type</p>
+                                          <b><%= recipe.type %></b>
+                                      </li>
+                                      <li>
+                                        <p>Tags</p>
+                                        <% recipe.tags.forEach(function(tag, index) { %>
+                                          <b><%= tag %></b>
+                                        <% }) %>
+                                    </li>
+                                    </ul>
+                                </div>
+                                <div class="dist-bottom-row <%= recipe.smallDescription.length > 50 ? 'long' : '' %>">
+                                  <%= recipe.smallDescription %>
+                                </div>
+                              </a>
+                          </div>
+                      </div>
+                      
+
+                      
+                      <% }) %>
+                    <% } else { %>
+                      <!-- <p>Aucun élément trouvé.</p> -->
+                    <% } %>
+
+                    <!-- LUNCH -->
+                    <% if(typeof food.lunchMeals !== 'undefined' && food.lunchMeals.length > 0) { %>
+                      <% food.lunchMeals.forEach(function(recipe, index){ %>
+                      
+                        <div class="col-lg-4 col-sm-6 dish-box-wp lunch" data-cat="lunch">
+                          <div class="dish-box text-center">
+                              <a href="/recipe/<%= recipe._id %>" class="col text-center">
+                                <div class="category__img category__img--large">
+                                  <img src="/uploads/<%= recipe.image[0] %>" alt="<%= recipe.name %>" loading="lazy">
+                                </div>
+                              
+                                <div class="dish-title">
+                                    <h3 class="h3-title"><%= recipe.name %></h3>
+                                    <p><%= recipe.author %></p>
+                                </div>
+                                <div class="dish-info">
+                                    <ul>
+                                      <li>
+                                          <p>Type</p>
+                                          <b><%= recipe.type %></b>
+                                      </li>
+                                      <li>
+                                        <p>Tags</p>
+                                        <% recipe.tags.forEach(function(tag, index) { %>
+                                          <b><%= tag %></b>
+                                        <% }) %>
+                                    </li>
+                                    </ul>
+                                </div>
+                                <div class="dist-bottom-row <%= recipe.smallDescription.length > 50 ? 'long' : '' %>">
+                                  <%= recipe.smallDescription %>
+                                </div>
+                              </a>
+                          </div>
+                      </div>
+                      </a>
+
+                      
+                      <% }) %>
+                    <% } else { %>
+                      <!-- <p>Aucun élément trouvé.</p> -->
+                    <% } %>
+
+                    <!-- DINNER -->
+                    <% if(typeof food.dinnerMeals !== 'undefined' && food.dinnerMeals.length > 0) { %>
+                      <% food.dinnerMeals.forEach(function(recipe, index){ %>
+                      
+                        <div class="col-lg-4 col-sm-6 dish-box-wp dinner" data-cat="dinner">
+                          <div class="dish-box text-center">
+                              <a href="/recipe/<%= recipe._id %>" class="col text-center">
+                                <div class="category__img category__img--large">
+                                  <img src="/uploads/<%= recipe.image[0] %>" alt="<%= recipe.name %>" loading="lazy">
+                                </div>
+                              
+                                <div class="dish-title">
+                                    <h3 class="h3-title"><%= recipe.name %></h3>
+                                    <p><%= recipe.author %></p>
+                                </div>
+                                <div class="dish-info">
+                                    <ul>
+                                        <li>
+                                            <p>Type</p>
+                                            <b><%= recipe.type %></b>
+                                        </li>
+                                        <li>
+                                          <p>Tags</p>
+                                          <div class="tags-container">
+                                            <% recipe.tags.forEach(function(tag, index) { %>
+                                              <b><%= tag %></b>
+                                            <% }) %>
+                                          </div>
+                                      </li>
+                                    </ul>
+                                </div>
+                                <div class="dist-bottom-row <%= recipe.smallDescription.length > 50 ? 'long' : '' %>">
+                                  <%= recipe.smallDescription %>
+                                </div>
+                              </a>
+                          </div>
+                      </div>
+                     
+
+                      
+                      <% }) %>
+                    <% } else { %>
+                      <!-- <p>Aucun élément trouvé.</p> -->
+                    <% } %>
+                  
+                  </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+      <a href="/explore-latest" class="sec-btn">En voir plus</a>
+    </div>
+</section>
+<!-- New categories end-->
+
 <!-- Categories Start -->
 
+<div class="d-flex justify-content-center">
+  <h3>Types</h3>
+</div>
+<div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4 justify-content-center">
 
-<div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
-
-
-  <% if(categories != '') { %>
-    <% categories.forEach(function(category, index) { %>
-      <a href="/categories/<%- category.name %>" class="col text-center category__link">
-        <div class="category__img shadow">
-          <img src="img/<%- category.image %>" alt="<%- category.name %>" loading="lazy">
-        </div>
-        <div class="pt-1"><%- category.name %></div>
-      </a>
+  <% if(typeof subCategories !== 'undefined' && subCategories.length > 0) { %>
+    <% subCategories.forEach(function(subCategory, index) { %>
+      <a href="/sub-categories/<%= subCategory %>" class="col text-center category__link shadow-lg">
+        <img src="/img/<%= subCategory %>.png" alt="<%- subCategory %>" loading="lazy" height="50" width="70">
+      <div class="pt-4"><%= subCategory %></div>
+    </a>
     <% }) %>
   <% } %>
 
-  <a href="/categories" class="col text-center category__link">
-    <div class="category__img shadow">
-      <img src="img/view-all.jpg" alt="View All Categories" loading="lazy">
-    </div>
-    <div class="pt-1">View All</div>
+  <a href="/categories" class="col text-center category__link shadow-lg">
+    
+      <img src="img/Full-Meal.png" alt="Voir toutes les Catégories" loading="lazy" height="50" width="70">
+    
+    <div class="pt-4">Voir toutes les Catégories</div>
   </a>
 
 </div>
 <!-- Categories End -->
 
-
-
 <!-- Latest Start -->
 
-<section class="pb-4 pt-4">
+<!-- <section class="pb-4 pt-4">
   <div class="d-flex mb-2 align-items-center">
-    <h2>Latest Recipes</h2>
-    <a href="/explore-latest" class="ms-auto">View More</a>
+    <h2>Dernières Recettes</h2>
+    <a href="/explore-latest" class="ms-auto">Voir Plus</a>
   </div>
 
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
@@ -62,118 +314,30 @@
       <% food.latest.forEach(function(recipe, index){ %>
       <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
         <div class="category__img category__img--large shadow">
-          <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+          <img src="/uploads/<%= recipe.image[0] %>" alt="<%= recipe.name %>" loading="lazy">
         </div>
         <div class="pt-1"><%= recipe.name %></div>
       </a>
       <% }) %>
     <% } else { %>
-      <p>No items found.</p>
+      <p>Aucun élément trouvé.</p>
     <% } %>
   </div>
 
-</section>
+</section> -->
 <!-- Latest End -->
-
-<!-- Thai Start -->
-<section class="pb-4 pt-4">
-  <div class="d-flex mb-2 align-items-center">
-    <h2>Thai Recipes</h2>
-    <a href="/categories/Thai" class="ms-auto">View More</a>
-  </div>
-
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    <% if(typeof food.thai !== 'undefined' && food.thai.length > 0) { %>
-      <% food.thai.forEach(function(recipe, index){ %>
-      <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
-        <div class="category__img category__img--large shadow">
-          <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
-        </div>
-        <div class="pt-1"><%= recipe.name %></div>
-      </a>
-      <% }) %>
-    <% } else { %>
-      <p>No items found.</p>
-    <% } %>
-  </div>
-</section>
-<!-- Thai End -->
-
-<!-- American Start -->
-<section class="pb-4 pt-4">
-  <div class="d-flex mb-2 align-items-center">
-    <h2>American Recipes</h2>
-    <a href="/categories/American" class="ms-auto">View More</a>
-  </div>
-
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    <% if(food.american != '') { %>
-      <% food.american.forEach(function(recipe, index){ %>
-      <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
-        <div class="category__img category__img--large shadow">
-          <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
-        </div>
-        <div class="pt-1"><%= recipe.name %></div>
-      </a>
-      <% }) %>
-    <% } else { %>
-      <p>No items found.</p>
-    <% } %>
-  </div>
-</section>
-<!-- American End -->
-
-<!-- Chinese Recipes -->
-<section class="pb-4 pt-4">
-  <div class="d-flex mb-2 align-items-center">
-    <h2>Chinese Recipes</h2>
-    <a href="/categories/American" class="ms-auto">View More</a>
-  </div>
-
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    <% if(food.chinese != '') { %>
-      <% food.chinese.forEach(function(recipe, index){ %>
-      <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
-        <div class="category__img category__img--large shadow">
-          <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
-        </div>
-        <div class="pt-1"><%= recipe.name %></div>
-      </a>
-      <% }) %>
-    <% } else { %>
-      <p>No items found.</p>
-    <% } %>
-  </div>
-</section>
-<!-- American End -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 <!-- Submit - Start -->
 <section class="px-4 py-5 my-5 text-center">
-  <img src="/img/publish-recipe.png" class="d-block mx-auto mb-4 img-fluid" alt="Publish your recipe for FREE today" width="566" height="208" loading="lazy">
-  <h1 class="display-5 fw-bold">Publish your recipe for FREE today</h1>
+  <img src="/img/publish-recipe.png" class="d-block mx-auto mb-4" alt="Publiez votre recette GRATUITEMENT aujourd'hui" width="566" height="auto" loading="lazy">
+  <h1 class="display-5 fw-bold">Vous avez une recette à partager?</h1>
   <div class="col-lg-6 mx-auto">
-    <p class="lead mb-4">Publish your Recipe in front of thousands of people for free.</p>
+    <p class="lead mb-4">Publiez votre recette ici, elle sera examinée par ma équipe.</p>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-      <a href="/submit-recipe" class="btn btn-primary btn-dark btn-lg">Submit Recipe</a>
+      <a href="/submit-recipe" class="sec-btn">Soumettre une Recette</a>
     </div>
   </div>
 </section>

@@ -2,25 +2,69 @@
   --bs-font-sans-serif: 'Rubik', sans-serif;
 }
 
-.container-xxl { max-width: 1530px; }
+.container-xxl { 
+  max-width: 100vw;
+  background-color: white;
+  overflow-x: hidden;
+}
 
 body {
   background-image: url("/img/i-like-food.svg");
-  background-color: rgb(243,243,243);
+  background-color: #f3f3f5;
 }
 
 a { color: var(--bs-dark); }
 
+.logo_title {
+  margin-left:1%;
+  color: grey !important;
+  vertical-align: middle;
+}
 
+.second_page {
+  height:fit-content;
+}
+
+/* Recipe Card */
+.recipe__link {
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  transition: 250ms all;
+  border-radius: 10px;
+  margin-right: 1%;
+  padding-top: 0.5%;
+  box-shadow: inset 6px 6px 8px #dadada, inset -6px -6px 8px #ffffff;
+}
 /* Category Card */
 .category__link {
   text-align: center;
   display: block;
   text-decoration: none;
   transition: 250ms all;
+  border-radius: 10px;
+  margin-right: 1%;
+  padding-top: 1%;
+  width: 10vw;
+  box-shadow: inset 6px 6px 8px #dadada, inset -6px -6px 8px #ffffff;
 }
 
-.category__link:hover {
+@media (max-width: 768px) {
+  .category__link {
+    width: 20%;
+    margin-right: 2%;
+  }
+}
+
+@media (max-width: 480px) {
+  .category__link {
+    width: 30%;
+    margin-right: 3%;
+    font-size: medium;
+  }
+}
+
+.category__link:hover, .recipe__link:hover {
   transform: scale(1.1);
 }
 
@@ -36,10 +80,93 @@ a { color: var(--bs-dark); }
 }
 
 .category__img--large {
-  height: 330px;
+  height: 200px;
+  margin-top: 8%;
+  margin-left: 8%;
+  margin-right: 8%;
+  border-radius: 15px;
 }
+
+.recipe__img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  margin-bottom: 10px;
+  box-shadow: 0px 3px 6px rgba(0,0,0,.16);
+  overflow: hidden;
+  border-radius: 8px;
+} 
+.categories-class {
+  display: block;
+}
+
+@media (min-width: 1500px) {
+  .category__img--large {
+    height: 250px;
+    margin-top: 8%;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 11px;
+  }
+  .categories-class {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
 
 .category__img img {
   width: 100%;
   object-fit: cover;
 }
+
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 30px;
+  font-size: 18px;
+  opacity: 0;
+  transition: opacity 0.3s, background-color 0.3s, color 0.3s;
+}
+
+#scrollToTopBtn:hover {
+  background-color: var(--primary-color);
+  /* color: #fff; */
+  border-color: #0d0d25;
+  box-shadow: inset 9px 9px 12px #cccccc, inset -9px -9px 12px #ffffff;
+  color: #0d0d25;
+}
+
+/* Ensure the icon is vertically centered */
+#scrollToTopBtn i {
+  vertical-align: middle;
+}
+
+.article_img {
+  height: 300px;
+}
+
+/* Add this to the end of your styles.css file */
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-left: 20px;
+}
+
+/* Update the parent container to have a relative position */
+.article-container {
+  position: relative;
+  height: 100%; /* Adjust this as needed */
+  min-height: 300px; /* Adjust this as needed */
+}
+

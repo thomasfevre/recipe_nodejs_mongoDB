@@ -26,6 +26,13 @@ app.use(fileUpload());
 app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
 
+app.use((req, res, next) => {
+  if (req.url.endsWith('.js')) {
+    res.setHeader('Content-Type', 'application/javascript');
+  }
+  next();
+});
+
 const routes = require('./server/routes/recipeRoutes.js')
 app.use('/', routes);
 
