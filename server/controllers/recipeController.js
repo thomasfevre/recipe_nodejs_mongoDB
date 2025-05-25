@@ -1,6 +1,8 @@
 require('../models/database');
-const Category = require('../models/Category');
 const Recipe = require('../models/Recipe');
+const Article = require('../models/Article');
+const nodemailer = require('nodemailer');
+
 
 /**
  * GET /
@@ -8,18 +10,23 @@ const Recipe = require('../models/Recipe');
 */
 exports.homepage = async(req, res) => {
   try {
-    const limitNumber = 5;
-    const categories = await Category.find({}).limit(limitNumber);
+    const limitNumber = 6;
     const latest = await Recipe.find({}).sort({_id: -1}).limit(limitNumber);
-    const thai = await Recipe.find({ 'category': 'Thai' }).limit(limitNumber);
-    const american = await Recipe.find({ 'category': 'American' }).limit(limitNumber);
-    const chinese = await Recipe.find({ 'category': 'Chinese' }).limit(limitNumber);
+   
 
-    const food = { latest, thai, american, chinese };
+    const allMeals = await Recipe.find({ 'category': 'All' }).limit(limitNumber);
+    const breakfastMeals = await Recipe.find({ 'category': 'Breakfast' }).limit(limitNumber);
+    const lunchMeals = await Recipe.find({ 'category': 'Lunch' }).limit(limitNumber);
+    const dinnerMeals = await Recipe.find({ 'category': 'Dinner' }).limit(limitNumber);
+    const snackMeals = await Recipe.find({ 'category': 'Snack' }).limit(limitNumber);
 
-    res.render('index', { title: 'Cooking Blog - Home', categories, food } );
+    const food = { latest,  allMeals, breakfastMeals, lunchMeals, dinnerMeals, snackMeals };
+    const meal_type = ["All", "Breakfast", "Lunch", "Dinner", "Snack"];
+    const subCategories = ['Full-Meal', 'Side-Dish', 'Snack', 'Quick & Easy', 'Fancy Meal', 'Dessert'];
+
+    res.render('index', { req, title: 'Cooking Blog - Home', food, meal_type, subCategories } );
   } catch (error) {
-    res.satus(500).send({message: error.message || "Error Occured" });
+    res.status(500).send({message: error.message || "Error Occured" });
   }
 }
 
@@ -28,10 +35,10 @@ exports.homepage = async(req, res) => {
  * Categories 
 */
 exports.exploreCategories = async(req, res) => {
-  try {
-    const limitNumber = 20;
-    const categories = await Category.find({}).limit(limitNumber);
-    res.render('categories', { title: 'Cooking Blog - Categories', categories } );
+  try {    
+    const categories = ['Breakfast', 'Lunch', 'Dinner'];
+    const types = ['Full-Meal', 'Side-Dish', 'Snack', 'Dessert'];
+    res.render('categories', { req, title: 'Cooking Blog - Categories', categories, types } );
   } catch (error) {
     res.status(500).send({message: error.message || "Error Occured" });
   }
@@ -39,17 +46,69 @@ exports.exploreCategories = async(req, res) => {
 
 
 /**
- * GET /categories/:id
- * Categories By Id
+ * GET /categories/:name
+ * Categories By name
 */
-exports.exploreCategoriesById = async(req, res) => { 
+exports.exploreRecipesByCategory = async(req, res) => { 
   try {
-    let categoryId = req.params.id;
+    let categoryName = req.params.name;
     const limitNumber = 20;
-    const categoryById = await Recipe.find({ 'category': categoryId }).limit(limitNumber);
-    res.render('categories', { title: 'Cooking Blog - Categoreis', categoryById } );
+    const recipes = await Recipe.find({ 'category': categoryName }).limit(limitNumber);
+   
+    res.render('recipe_list', { req, title: 'Recipes - ' + categoryName, recipes } );
   } catch (error) {
-    res.satus(500).send({message: error.message || "Error Occured" });
+    res.status(500).send({message: error.message || "Error Occured" });
+  }
+} 
+
+/**
+ * GET /type/:name
+ * Categories By name
+*/
+exports.exploreRecipesByType = async(req, res) => { 
+  try {
+    let typeName = req.params.name;
+    const limitNumber = 20;
+    const recipes = await Recipe.find({ 'type': typeName }).limit(limitNumber);
+   
+    res.render('recipe_list', { req, title: 'Recipes - ' + typeName, recipes } );
+  } catch (error) {
+    res.status(500).send({message: error.message || "Error Occured" });
+  }
+} 
+
+/**
+ * GET /type/:name
+ * Categories By name
+*/
+exports.exploreRecipesByTags = async(req, res) => { 
+  try {
+    let tagsName = req.params.name;
+    const limitNumber = 20;
+    const recipes = await Recipe.find({ 'type': tagsName }).limit(limitNumber);
+   
+    res.render('recipe_list', { req, title: 'Recipes - ' + tagsName, recipes } );
+  } catch (error) {
+    res.status(500).send({message: error.message || "Error Occured" });
+  }
+} 
+
+/**
+ * GET /type/:name
+ * Categories By name
+*/
+exports.exploreRecipesByTypeOrTags = async(req, res) => { 
+  try {
+    let param = req.params.name;
+    const limitNumber = 20;
+    const recipes = await Recipe.find({ $or: [
+      { type: { $regex: param, $options: 'i' } },
+      { tags: { $regex: param, $options: 'i' } }
+    ] }).limit(limitNumber);
+   
+    res.render('recipe_list', { req, title: 'Recipes - ' + param, recipes } );
+  } catch (error) {
+    res.status(500).send({message: error.message || "Error Occured" });
   }
 } 
  
@@ -61,9 +120,9 @@ exports.exploreRecipe = async(req, res) => {
   try {
     let recipeId = req.params.id;
     const recipe = await Recipe.findById(recipeId);
-    res.render('recipe', { title: 'Cooking Blog - Recipe', recipe } );
+    res.render('recipe', { req, title: 'Recipes', recipe } );
   } catch (error) {
-    res.satus(500).send({message: error.message || "Error Occured" });
+    res.status(500).send({message: error.message || "Error Occured" });
   }
 } 
 
@@ -76,9 +135,9 @@ exports.searchRecipe = async(req, res) => {
   try {
     let searchTerm = req.body.searchTerm;
     let recipe = await Recipe.find( { $text: { $search: searchTerm, $diacriticSensitive: true } });
-    res.render('search', { title: 'Cooking Blog - Search', recipe } );
+    res.render('search', { req, title: 'Cooking Blog - Search', recipe } );
   } catch (error) {
-    res.satus(500).send({message: error.message || "Error Occured" });
+    res.status(500).send({message: error.message || "Error Occured" });
   }
   
 }
@@ -90,10 +149,10 @@ exports.searchRecipe = async(req, res) => {
 exports.exploreLatest = async(req, res) => {
   try {
     const limitNumber = 20;
-    const recipe = await Recipe.find({}).sort({ _id: -1 }).limit(limitNumber);
-    res.render('explore-latest', { title: 'Cooking Blog - Explore Latest', recipe } );
+    const recipes = await Recipe.find({}).sort({ _id: -1 }).limit(limitNumber);
+    res.render('recipe_list', { req, title: 'Cooking Blog - Explore Latest', recipes } );
   } catch (error) {
-    res.satus(500).send({message: error.message || "Error Occured" });
+    res.status(500).send({message: error.message || "Error Occured" });
   }
 } 
 
@@ -108,9 +167,9 @@ exports.exploreRandom = async(req, res) => {
     let count = await Recipe.find().countDocuments();
     let random = Math.floor(Math.random() * count);
     let recipe = await Recipe.findOne().skip(random).exec();
-    res.render('explore-random', { title: 'Cooking Blog - Explore Latest', recipe } );
+    res.render('explore-random', { req, title: 'Cooking Blog - Explore Latest', recipe } );
   } catch (error) {
-    res.satus(500).send({message: error.message || "Error Occured" });
+    res.status(500).send({message: error.message || "Error Occured" });
   }
 } 
 
@@ -122,8 +181,21 @@ exports.exploreRandom = async(req, res) => {
 exports.submitRecipe = async(req, res) => {
   const infoErrorsObj = req.flash('infoErrors');
   const infoSubmitObj = req.flash('infoSubmit');
-  res.render('submit-recipe', { title: 'Cooking Blog - Submit Recipe', infoErrorsObj, infoSubmitObj  } );
+  res.render('submit-recipe', { req, title: 'Cooking Blog - Submit Recipe', infoErrorsObj, infoSubmitObj  } );
 }
+
+exports.test = async(req, res) => {
+  const infoErrorsObj = req.flash('infoErrors');
+  const infoSubmitObj = req.flash('infoSubmit');
+  res.render('test', { req, title: 'Cooking Blog - Test', infoErrorsObj, infoSubmitObj  } );
+}
+
+exports.getAboutPage = async(req, res) => {
+  const infoErrorsObj = req.flash('infoErrors');
+  const infoSubmitObj = req.flash('infoSubmit');
+  res.render('about', { req, title: 'Cooking Blog - About Me', infoErrorsObj, infoSubmitObj  } );
+}
+
 
 /**
  * POST /submit-recipe
@@ -132,42 +204,103 @@ exports.submitRecipe = async(req, res) => {
 exports.submitRecipeOnPost = async(req, res) => {
   try {
 
-    let imageUploadFile;
-    let uploadPath;
-    let newImageName;
+    let imagesUploadFiles = req.files.images;
+    let uploadPaths = [];
+    let newImageNames = [];
 
     if(!req.files || Object.keys(req.files).length === 0){
       console.log('No Files where uploaded.');
     } else {
+      if(Array.isArray(imagesUploadFiles)) {
+        imagesUploadFiles.forEach((imageUploadFile) => {
+          newImageName = req.body.email + "_" + new Date().toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) + imageUploadFile.name ;
+          newImageName = newImageName.replace(/[\/,:]/g, '_').replace(' ', '');
+          uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
+          imageUploadFile.mv(uploadPath, function(err){
+            if(err) return res.status(500).send(err);
+          })
 
-      imageUploadFile = req.files.image;
-      newImageName = Date.now() + imageUploadFile.name;
+          uploadPaths.push(uploadPath);
+          newImageNames.push(newImageName);
+        });
+      } else {
+        newImageName = req.body.email + "_" + new Date().toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) + imagesUploadFiles.name ;
+        newImageName = newImageName.replace(/[\/,:]/g, '_');
+        uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
+    
+        imagesUploadFiles.mv(uploadPath, function(err){
+          if(err) return res.status(500).send(err);
+        })
 
-      uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
-
-      imageUploadFile.mv(uploadPath, function(err){
-        if(err) return res.satus(500).send(err);
-      })
+        uploadPaths.push(uploadPath);
+        newImageNames.push(newImageName);
+      }
 
     }
 
-    const newRecipe = new Recipe({
-      name: req.body.name,
-      description: req.body.description,
-      email: req.body.email,
-      ingredients: req.body.ingredients,
-      category: req.body.category,
-      image: newImageName
-    });
-    
-    await newRecipe.save();
+    // Convert req.body.tags to an array of strings
+    let tagsArray = req.body.tags.split(',').map(tag => tag.trim());
 
-    req.flash('infoSubmit', 'Recipe has been added.')
+    /////////////////// send email to admin
+
+    // Create a transporter using SMTP
+    let transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false, // Use TLS
+      auth: {
+        user: 'balance2eat@gmail.com', // Your Gmail address
+        pass: process.env.GMAIL_APP_PASSWORD // Your Gmail app password
+      }
+    });
+
+    // Prepare email content in MongoDB format
+    let mailOptions = {
+      from: req.body.email,
+      to: 'balance2eat@gmail.com',
+      subject: 'New Recipe Submission',
+      
+      text: JSON.stringify({
+        name: req.body.name,
+        author: req.body.author,
+        smallDescription: req.body.smallDescription,
+        fullDescription: req.body.fullDescription,
+        email: req.body.email,
+        ingredients: req.body.ingredients,
+        category: req.body.category,
+        type: req.body.type,
+        tags: tagsArray,
+        image: newImageNames
+      })
+    };
+
+    // Send email
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log('Error sending email:', error);
+      } else {
+        console.log('Email sent:', info.response);
+      }
+    });
+
+    // Save the recipe and redirect (uncomment these lines when ready)
+    // const newRecipe = new Recipe({
+    //   name: req.body.name,
+    //   description: req.body.description,
+    //   email: req.body.email,
+    //   ingredients: req.body.ingredients,
+    //   category: req.body.category,
+    //   images: newImageNames
+    // });
+    
+    // await newRecipe.save();
+
+    req.flash('infoSubmit', 'La recette a été soumise et un email a été envoyé à l\'administrateur.')
     res.redirect('/submit-recipe');
   } catch (error) {
     // res.json(error);
     req.flash('infoErrors', error);
-    res.redirect('/submit-recipe');
+    // res.redirect('/submit-recipe');
   }
 }
 
@@ -199,77 +332,72 @@ exports.submitRecipeOnPost = async(req, res) => {
 
 
 /**
- * Dummy Data Example 
+ * GET /health
+ * View health Article page 
 */
 
-// async function insertDymmyCategoryData(){
-//   try {
-//     await Category.insertMany([
-//       {
-//         "name": "Thai",
-//         "image": "thai-food.jpg"
-//       },
-//       {
-//         "name": "American",
-//         "image": "american-food.jpg"
-//       }, 
-//       {
-//         "name": "Chinese",
-//         "image": "chinese-food.jpg"
-//       },
-//       {
-//         "name": "Mexican",
-//         "image": "mexican-food.jpg"
-//       }, 
-//       {
-//         "name": "Indian",
-//         "image": "indian-food.jpg"
-//       },
-//       {
-//         "name": "Spanish",
-//         "image": "spanish-food.jpg"
-//       }
-//     ]);
-//   } catch (error) {
-//     console.log('err', + error)
-//   }
-// }
+exports.getHealthPage = async (req, res) => {
+  try {
+    const articles = await Article.find({}).sort({ createdAt: 'desc' }).limit(10);
+    const tags = await Article.distinct('tags');
+    res.render('health', { req, title: 'Health & Wellness Blog', articles, tags });
+  } catch (error) {
+    res.status(500).send({ message: error.message || "Error Occured" });
+  }
+}
 
-// insertDymmyCategoryData();
+/**
+ * GET /health/:tag
+ * View health Article page by Tag
+*/
+exports.getArticlesByTag = async (req, res) => {
+  try {
+    const articles = await Article.find({ tags: req.params.tag}).sort({ createdAt: 'desc' }).limit(10);
+    const tags = await Article.distinct('tags');
+    res.render('health', { req, title: 'Health & Wellness Blog', articles, tags });
+  } catch (error) {
+    res.status(500).send({ message: error.message || "Error Occured" });
+  }
+}
 
+/**
+ * POST /article-search
+ * View health Article page by Search Term
+*/
+exports.searchArticle = async (req, res) => {
+  try {
+    const searchTerm = req.body.searchTerm;
+    const articles = await Article.find({
+      $or: [
+        { title: { $regex: searchTerm, $options: 'i' } },
+        { summary: { $regex: searchTerm, $options: 'i' } },
+        { content: { $regex: searchTerm, $options: 'i' } },
+        { tags: { $regex: searchTerm, $options: 'i' } }
+      ]
+    }).sort({ createdAt: 'desc' }).limit(10);
+    const tags = await Article.distinct('tags');
+    res.render('health', { req, title: 'Health & Wellness Blog', articles, tags });
+  } catch (error) {
+    res.status(500).send({ message: error.message || "Error Occured" });
+  }
+}
 
-// async function insertDymmyRecipeData(){
-//   try {
-//     await Recipe.insertMany([
-//       { 
-//         "name": "Recipe Name Goes Here",
-//         "description": `Recipe Description Goes Here`,
-//         "email": "recipeemail@raddy.co.uk",
-//         "ingredients": [
-//           "1 level teaspoon baking powder",
-//           "1 level teaspoon cayenne pepper",
-//           "1 level teaspoon hot smoked paprika",
-//         ],
-//         "category": "American", 
-//         "image": "southern-friend-chicken.jpg"
-//       },
-//       { 
-//         "name": "Recipe Name Goes Here",
-//         "description": `Recipe Description Goes Here`,
-//         "email": "recipeemail@raddy.co.uk",
-//         "ingredients": [
-//           "1 level teaspoon baking powder",
-//           "1 level teaspoon cayenne pepper",
-//           "1 level teaspoon hot smoked paprika",
-//         ],
-//         "category": "American", 
-//         "image": "southern-friend-chicken.jpg"
-//       },
-//     ]);
-//   } catch (error) {
-//     console.log('err', + error)
-//   }
-// }
+/**
+ * GET /article/:id
+ * View Article
+*/
+exports.viewArticle = async (req, res) => {
+  try {
+    const articleId = req.params.id;
+    const article = await Article.findById(articleId);
+    
+    if (!article) {
+      res.status(404).send('Article not found');
+      return;
+    }
 
-// insertDymmyRecipeData();
-
+    res.render('article', { req, title: article.title, article });
+  } catch (error) {
+    res.status(500).send({ message: error.message || "Error Occurred" });
+  }
+}
