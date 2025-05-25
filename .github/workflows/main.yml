@@ -1,0 +1,17 @@
+name: Keep Render App Warm
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # Every 10 minutes
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  keep-warm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping and log response
+        run: |
+          echo "Pinging sites..."
+          curl -s -o /dev/null -w "%{http_code}\n" https://recipe-nodejs-mongodb.onrender.com/
+          curl -s -o /dev/null -w "%{http_code}\n" https://chill-split.onrender.com/
+

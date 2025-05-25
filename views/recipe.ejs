@@ -1,41 +1,74 @@
-<% if(recipe != null ) { %>
+<div class="second_page">
 
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page"><%- recipe.name %></li>
-    </ol>
-  </nav>
+  <% if(recipe != null ) { %>
 
+    <div class="row pt-4">
 
-  <div class="row">
-
-    <div class="col-12 col-md-4">
-      <img src="/uploads/<%- recipe.image %>" class="img-fluid sticky-top" style="top: 20px;" alt="<%- recipe.name %>" loading="lazy">
-    </div>
-
-    <div class="col-12 col-md-8">
-      <div class="row">
-        <div class="col-12"><h1><%- recipe.name %></h1></div>
-        <div class="col-12 mb-4"><i class="bi bi-tag"></i> <%- recipe.category %></div>
-        <div class="col-12" style="white-space: pre-line;">
-          <h4>Cooking Instructions</h4>
-          <%- recipe.description %>
-        </div>
-      </div>
-
-      <div class="row pt-4">
-        <div class="col-12">
-          <h4>Ingredients</h4>
-          <ul class="list-group list-group-flush">
-            <% recipe.ingredients.forEach(function(ingredients, index){ %>
-              <li class="list-group-item"><%= ingredients %></li>
+      <div class="col-12 col-md-4 col-lg-3">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <% recipe.image.forEach(function(image, index){ %>
+              <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                <img src="/uploads/<%- image %>" class="d-block w-100 recipe-img" alt="<%- recipe.name %>" loading="lazy">
+              </div>
             <% }) %>
-          </ul> 
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
+
+      <div class="col-12 col-md-8 col-lg-9">
+        <div class="row">
+          <div class="col-12"><h1><%- recipe.name %></h1></div>
+          <div class="col-12 d-flex flex-wrap">
+            <div class="me-3 mb-3"><i class="bi bi-egg-fried"></i> <%- recipe.category %></div>
+            <div class="me-3 mb-3"><i class="bi bi-info-circle"></i> <%- recipe.type %></div>
+            <div><i class="bi bi-tag"></i> <%- recipe.tags %></div>
+          </div>
+          <div class="col-12">
+            <p><%- recipe.smallDescription %></p>
+          </div>
+          
+          <div class="row pt-4">
+            <div class="col-12">
+              <h4>Ingrédients</h4>
+              <div class="row">
+                <% recipe.ingredients.forEach(function(ingredients, index){ %>
+                  <% if(index % 2 === 0) { %>
+                    <div class="col-6">
+                      <ul class="list-group">
+                        <li class="list-group-item"><%= ingredients %></li>
+                      </ul>
+                    </div>
+                  <% } else { %>
+                    <div class="col-6">
+                      <ul class="list-group">
+                        <li class="list-group-item"><%= ingredients %></li>
+                      </ul>
+                    </div>
+                  <% } %>
+                <% }) %>
+              </div> 
+            </div>
+          </div>
+
+        </div>
+        
+      </div>
     </div>
-  </div>
-<% } else { %>
-  <p>No item found.</p>
-<% } %>
+    <div class="col-12" style="white-space: pre-line;">
+      <h4>Instructions de Cuisine</h4>
+      <%- recipe.fullDescription %>
+    </div>
+    
+  <% } else { %>
+    <p>Aucun élément trouvé.</p>
+  <% } %>
+</div>

@@ -1,7 +1,7 @@
 <div class="px-4 py-5 my-5 text-center">
-  <h1 class="display-5 fw-bold">Submit Your Recipe</h1>
+  <h1 class="display-5 fw-bold">Soumettre votre recette</h1>
   <div class="col-lg-6 mx-auto">
-    <p class="lead">Share your amazing recipies with thousands of web developers accross the world. Fill our form to get started.</p>
+    <p class="lead">Partagez vos recettes incroyables avec des milliers de développeurs web du monde entier. Remplissez notre formulaire pour commencer.</p>
   </div>
 </div>
 
@@ -27,52 +27,83 @@
 
         <div class="col-12">
           <label for="email" class="form-label">Email</label>
-          <input type="email" name="email" id="email" class="form-control">
+          <input type="email" name="email" id="email" class="form-control" placeholder="ex: mail@example.com" required>
         </div>
 
         <div class="col-12">
-          <label for="name" class="form-label">Recipe Name</label>
-          <input type="text" name="name" id="name" class="form-control" required>
+          <label for="author" class="form-label">Nom</label>
+          <small class="form-text text-muted">Ceci sera votre nom d'affichage public.</small>
+          <input type="text" name="author" id="author" class="form-control" placeholder="ex: Jean" maxlength="30" required>
+        </div>
+
+        <div class="col-12">
+          <label for="name" class="form-label">Nom de la recette</label>
+          <input type="text" name="name" id="name" class="form-control" placeholder="ex: Poulet Tikka Masala" maxlength="35" required>
         </div>
         
         <div class="col-12">
-          <label for="description" class="form-label">Description</label>
-          <textarea name="description" id="description" class="form-control" cols="30" rows="4"></textarea>
+          <label for="smallDescription" class="form-label">Description rapide</label>
+          <small class="form-text text-muted">Ceci est une phrase sur votre recette.</small>
+          <textarea required name="smallDescription" id="smallDescription" class="form-control" cols="30" rows="1" maxlength="75"></textarea>
         </div>
 
         <div class="col-12">
-          <label for="name" class="form-label">Ingredients</label><br>
-          <small>Example: Ice</small>
+          <label for="fullDescription" class="form-label">Description complète</label>
+          <small class="form-text text-muted">Décrivez votre recette et toutes les étapes.</small>
+          <textarea required name="fullDescription" id="fullDescription" class="form-control" cols="30" rows="4"></textarea>
+        </div>
+
+        <div class="col-12">
+          <label for="name" class="form-label">Ingrédients</label><br>
           <div class="ingredientList">
-            <div class="ingredeintDiv mb-1">
-              <input type="text" name="ingredients" class="form-control">
+            <div class="ingredientDiv mb-1 d-flex" draggable="true">
+              <input type="text" name="ingredients" class="form-control" placeholder="ex: Sel">
+              <button type="button" class="btn btn-outline-danger remove-ingredient ms-2">Retirer</button>
             </div>
           </div>
         </div>
 
         <div class="col-12">
-          <button type="button" class="btn btn-outline-primary" id="addIngredientsBtn">+ Ingredient</button>
+          <button type="button" class="btn btn-outline-primary" id="addIngredientsBtn">+ Ingrédient</button>
         </div>
 
         <div class="col-12">
-          <label for="category">Select Category</label>
-          <select class="form-select form-control" name="category" aria-label="Category">
-            <option selected>Select Category</option>
-            <option value="Thai">Thai</option>
-            <option value="American">American</option>
-            <option value="Chinese">Chinese</option>
-            <option value="Mexican">Mexican</option>
-            <option value="Indian">Indian</option>
+          <label for="category">Sélectionnez une catégorie</label>
+          <select class="form-select form-control" name="category" aria-label="Catégorie" required>
+            <option selected>Sélectionnez une catégorie</option>
+            
+            <option value="Breakfast">Petit-déjeuner</option>
+            <option value="Lunch">Déjeuner</option>
+            <option value="Dinner">Dîner</option>
+            <option value="All">Autre</option>
           </select>
         </div>
 
         <div class="col-12">
-          <label for="image">Product Image</label>
-          <input type="file" class="form-control" name="image" accept="image/*">
+          <label for="type">Sélectionnez un type</label>
+          <select class="form-select form-control" name="type" aria-label="Type" required>
+            <option selected>Sélectionnez un type</option>
+            
+            <option value="Full-meal">Repas complet</option>
+            <option value="Side-Dish">Accompagnement</option>
+            <option value="Desert">Dessert</option>
+            <option value="Snack">En-cas</option>
+            <option value="Other">Autre</option>
+          </select>
         </div>
 
         <div class="col-12">
-          <button type="submit" class="btn btn-primary">Submit Recipe</button>
+          <label for="tags" class="form-label">Tags</label>
+          <input type="text" name="tags" id="tags" class="form-control" placeholder="ex: Rapide, Facile, Fancy" >
+        </div>
+
+        <div class="col-12">
+          <label for="images">Images du produit</label>
+          <input type="file" class="form-control" name="images" accept="image/*" multiple required>
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Soumettre la recette</button>
         </div>
 
       </div>
@@ -81,3 +112,4 @@
 
   </div>
 </div>
+<script src="/js/script.js"></script>
