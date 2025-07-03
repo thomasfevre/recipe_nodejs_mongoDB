@@ -1,4 +1,4 @@
-name: #2 Keep Render App Warm
+name: 2 Keep Render App Warm
 
 on:
   schedule:
@@ -13,4 +13,4 @@ jobs:
         run: |
           echo "Pinging sites..."
           curl -s -o /dev/null -w "%{http_code}\n" https://recipe-nodejs-mongodb.onrender.com/
-          curl -s -o /dev/null -w "%{http_code}\n" https://chill-split.onrender.com/
+        #  curl -s -o /dev/null -w "%{http_code}\n" https://chill-split.onrender.com/
